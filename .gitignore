@@ -1,0 +1,8 @@
+# macOS metadata
+.DS_Store
+
+# Local Obsidian vault settings and workspace state
+.obsidian/
+
+# Local sample application archives (matches the iOS playbook)
+/playbooks/sample-apps/*.zip
