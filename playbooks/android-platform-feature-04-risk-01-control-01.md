@@ -6,7 +6,7 @@ Prevent overlay windows from appearing over your app
 
 ### Description
 
-Insert here
+Prevent overlay windows from appearing over your app by calling window.setHideOverlayWindows(true) in onResume()
 
 ### Demonstration
 

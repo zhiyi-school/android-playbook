@@ -6,7 +6,7 @@ Detect a certificate mismatch via CertificatePinner
 
 ### Description
 
-Insert here
+Detect a certificate mismatch via CertificatePinner by first pinning a hash in your application at build time and then comparing it to the server's actual SHA-256 public key hash to ensure your application communicates only with the legitimate server
 
 ### Demonstration
 

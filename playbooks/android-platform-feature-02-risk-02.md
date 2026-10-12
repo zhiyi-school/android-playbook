@@ -6,11 +6,7 @@ Capturing the application's runtime logs via Android Debug Bridge (ADB)
 
 ### Description
 
-Because the Android platform provides USB debugging feature, your application is at risk of an attacker capturing the application's runtime logs via Android Debug Bridge (ADB).
-
-### Goal
-
-As a result, this could lead to **_Collection_** - attackers gathering data of interest like session tokens, credit card numbers to their goal.
+Capture the application's runtime logs via Android Debug Bridge (ADB) to gather sensitive data, such as session tokens and credit card numbers (MITRE ATT&CK: ***Collection*** - TA0035).
 
 ### Demonstration
 
@@ -18,7 +14,8 @@ As a result, this could lead to **_Collection_** - attackers gathering data of i
 
 Set up the required environment with:
 
-* An emulated Google Pixel 6 running Android 12 (api level 31)
+* A physical Samsung A34 running Android 16 (api level 36)
+* A physical Huawei P50 Pro running HarmonyOS 4.2.0 (Android API level 31)
 * A Windows host computer with Android Studio & adb installed
 
 #### 02. Ensure the AVD is connected to your computer

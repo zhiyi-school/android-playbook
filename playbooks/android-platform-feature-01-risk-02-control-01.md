@@ -6,7 +6,7 @@ Detect modifications to your application
 
 ### Description
 
-Insert here
+Detect modifications to your application by calculating the SHA-256 signature hash at runtime and comparing it to a hardcoded expected value
 
 ### Demonstration
 

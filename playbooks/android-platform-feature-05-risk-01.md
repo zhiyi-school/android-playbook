@@ -6,11 +6,7 @@ Performing operations programmatically on its user interface
 
 ### Description
 
-Because the Android platform provides accessibility services feature, your application is at risk of an attacker performing operations programmatically on its user interface.
-
-### Goal
-
-As a result, this could lead to **_Impact_** - attackers manipulating your application.
+Perform operations programmatically on the application's user interface using accessibility services to manipulate the application (MITRE ATT&CK: ***Impact*** - TA0034).
 
 ### Demonstration
 
@@ -18,7 +14,8 @@ As a result, this could lead to **_Impact_** - attackers manipulating your appli
 
 Set up the required environment with:
 
-* An emulated Google Pixel 6 running Android 12 (api level 31)
+* A physical Samsung A34 running Android 16 (api level 36)
+* A physical Huawei P50 Pro running HarmonyOS 4.2.0 (Android API level 31)
 
 #### 02. Create a malicious application
 

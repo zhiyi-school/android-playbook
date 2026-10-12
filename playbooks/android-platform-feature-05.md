@@ -18,7 +18,8 @@ Accessibility services is a feature that allows applications to assist users wit
 
 Set up the required environment with:
 
-* An emulated Google Pixel 6 running Android 12 (api level 31)
+* A physical Samsung A34 running Android 16 (api level 36)
+* A physical Huawei P50 Pro running HarmonyOS 4.2.0 (Android API level 31)
 
 #### 02. View the apps listed
 

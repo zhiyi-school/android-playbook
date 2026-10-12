@@ -6,11 +6,7 @@ Drawing over its user interface with a malicious application
 
 ### Description
 
-Because the Android platform provides overlay feature, your application is at risk of an attacker drawing over its user interface with a malicious application.
-
-### Goal
-
-As a result, this could lead to **_Credential access_** - attackers stealing usernames & passwords.
+Draw over the application's user interface using a malicious application to steal usernames and passwords (MITRE ATT&CK: ***Credential Access*** - TA0031).
 
 ### Demonstration
 
@@ -18,7 +14,8 @@ As a result, this could lead to **_Credential access_** - attackers stealing use
 
 Set up the required environment with:
 
-* An emulated Google Pixel 6 running Android 12 (api level 31)
+* A physical Samsung A34 running Android 16 (api level 36)
+* A physical Huawei P50 Pro running HarmonyOS 4.2.0 (Android API level 31)
 
 #### 02. Create a malicious application
 

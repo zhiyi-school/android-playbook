@@ -6,7 +6,7 @@ Prevent access to private data directory information
 
 ### Description
 
-Insert here
+Prevent access to private data directory information by encrypting sensitive data at rest using AES-256 encryption with a SecretKey stored in the Android Keystore
 
 ### Demonstration
 

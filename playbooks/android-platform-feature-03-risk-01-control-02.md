@@ -6,7 +6,7 @@ Detect an active HTTP proxy
 
 ### Description
 
-Insert here
+Detect an active HTTP proxy by checking the mobile device’s network configuration using ConnectivityManager and ProxySelector during the onCreate() and onResume() methods
 
 ### Demonstration
 

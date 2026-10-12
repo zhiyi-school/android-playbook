@@ -6,7 +6,7 @@ Prevent reverse engineering
 
 ### Description
 
-Insert here
+Prevent reverse engineering by enabling `R8`/`Proguard` in `app/build.gradle` to rename classes, methods and variables into short, meaningless words
 
 ### Demonstration
 

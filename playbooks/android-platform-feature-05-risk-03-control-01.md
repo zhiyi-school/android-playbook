@@ -6,7 +6,7 @@ Prevent on-screen text capture
 
 ### Description
 
-Insert here
+Prevent on-screen text capture by setting android:importantForAccessibility=”noHideDescendants”on views in the layout XML. This prevents the view and all its child views from being exposed to accessibility services, blocking events that could otherwise be used to read sensitive text
 
 ### Demonstration
 

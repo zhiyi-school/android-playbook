@@ -6,7 +6,7 @@ Detect USB debugging
 
 ### Description
 
-Insert here
+Detect USB debugging by reading Settings.Global.ADB_ENABLED during the onCreate() and onResume() methods
 
 ### Demonstration
 

@@ -6,11 +6,7 @@ Analysing the application's APK file
 
 ### Description
 
-Because the Android platform provides APK acquisition feature, your application is at risk of an attacker analysing the application's APK file.
-
-### Goal
-
-As a result, this could lead to **_Discovery_** -  attackers figuring out the APK’s vulnerabilities.
+Analyse the application's APK using static analysis tools to identify potential vulnerabilities in the application (MITRE ATT&CK: ***Discovery*** - TA0032).
 
 ### Demonstration
 
@@ -18,7 +14,8 @@ As a result, this could lead to **_Discovery_** -  attackers figuring out the AP
 
 Set up the required environment with:
 
-* An emulated Google Pixel 6 running Android 12 (api level 31)
+* A physical Samsung A34 running Android 16 (api level 36)
+* A physical Huawei P50 Pro running HarmonyOS 4.2.0 (Android API level 31)
 * A MobSF instance running and accessible through a web browser
 
 #### 02. Set up a mobile application analyser

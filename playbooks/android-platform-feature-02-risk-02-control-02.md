@@ -6,7 +6,7 @@ Detect sensitive data patterns in log messages
 
 ### Description
 
-Insert here
+Detect sensitive data patterns in log messages by using regular expressions to identify potential leaks before they reach Logcat
 
 ### Demonstration
 

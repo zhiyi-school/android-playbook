@@ -6,11 +6,7 @@ Accessing the application’s private data directory
 
 ### Description
 
-Because the Android platform provides USB debugging feature, your application is at risk of an attacker accessing the application’s private data directory.
-
-### Goal
-
-As a result, this could lead to **_Credential access_** - attackers stealing usernames & passwords.
+Access the application's private data directory through USB debugging to obtain stored usernames and passwords (MITRE ATT&CK: ***Credential Access*** - TA0031).
 
 ### Demonstration
 
@@ -19,6 +15,7 @@ As a result, this could lead to **_Credential access_** - attackers stealing use
 Set up the required environment with:
 
 * A physical Samsung A34 running Android 16 (api level 36)
+* A physical Huawei P50 Pro running HarmonyOS 4.2.0 (Android API level 31)
 * A Windows host computer with Android Studio, Apktool & keytool installed
 
 #### 02. Disassemble your APK

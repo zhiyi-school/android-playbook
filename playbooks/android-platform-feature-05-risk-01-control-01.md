@@ -6,7 +6,7 @@ Prevent unauthorised programmatic operations like logging out
 
 ### Description
 
-Insert here
+Prevent unauthorised programmatic operations like logging out by requiring user verification through biometric authentication. A logout button calls initiateLogoutBiometricAuth(), which triggers the biometric authentication prompt
 
 ### Demonstration
 

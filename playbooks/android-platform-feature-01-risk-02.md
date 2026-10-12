@@ -6,11 +6,7 @@ Repackaging the application's APK file
 
 ### Description
 
-Because the Android platform provides APK acquisition feature, your application is at risk of an attacker repackaging the application's APK file.
-
-### Goal
-
-As a result, this could lead to **_Defense evasion_** -  attackers avoid being detected.
+Repackage the application's APK to modify the application and avoid being detected (MITRE ATT&CK: ***Defense Evasion*** - TA0030).
 
 ### Demonstration
 
@@ -18,7 +14,8 @@ As a result, this could lead to **_Defense evasion_** -  attackers avoid being d
 
 Set up the required environment with:
 
-* An emulated Google Pixel 6 running Android 12 (api level 31)
+* A physical Samsung A34 running Android 16 (api level 36)
+* A physical Huawei P50 Pro running HarmonyOS 4.2.0 (Android API level 31)
 * A Windows host computer with Apktool & keytool installed
 
 #### 02. Unpack the APK
