@@ -32,3 +32,5 @@ class MainActivity : ReactActivity() {
 *Code block shows implementation of `FLAG_SECURE`*
 
 > Note: `FLAG_SECURE` applies only to the window it is set on. Dialogs, popup windows, bottom sheets, and React Native `<Modal>` content open in separate windows that do not inherit it, so set the flag on those windows too and include them when verifying the control.
+
+The source code with the implemented control can be found [here](control-examples/android-platform-feature-06-risk-01-control-01.zip).

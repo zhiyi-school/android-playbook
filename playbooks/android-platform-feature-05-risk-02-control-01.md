@@ -78,3 +78,5 @@ This stops accessibility services that use default settings from receiving event
 ```
 
 *Code block shows the layout XML with `android:importantForAccessibility` set*
+
+The source code with the implemented control can be found [here](control-examples/android-platform-feature-05-risk-02-control-01.zip).

@@ -57,3 +57,5 @@ fun BlockedByAdbDialog() {
 <img src="assets/feature2_risk2_control1_ss1.png" width="800" alt="The USB debugging warning displayed on the device">
 
 *Screenshot shows the USB debugging warning displayed on the device.*
+
+The source code with the implemented control can be found [here](control-examples/android-platform-feature-02-risk-02-control-01.zip).

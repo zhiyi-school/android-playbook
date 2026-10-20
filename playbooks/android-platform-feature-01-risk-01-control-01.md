@@ -69,3 +69,5 @@ private static String decrypt(byte[] encrypted) {
 However, it is obfuscation, not encryption: the key is in the same APK, so the value can be recovered with a decompiler or by hooking `getApiKey()` at runtime.
 
 > Note: Secret keys, such as payment `sk_live_` keys, must not be shipped in the app in any form. Keep them on the server and have the app call the server instead.
+
+The source code with the implemented control can be found [here](control-examples/android-platform-feature-01-risk-01-control-01.zip).

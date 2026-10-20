@@ -98,3 +98,5 @@ Prevent your application from executing when modifications to your application a
 <img src="assets/feature1_risk2_control1_ss3.png" width="800" alt="Android Studio Logcat showing a signing certificate mismatch and blocked application initialization">
 
 *Screenshot shows different actual and expected SHA-256 hashes, failed signature verification, and blocked application initialization in Android Studio Logcat.*
+
+The source code with the implemented control can be found [here](control-examples/android-platform-feature-01-risk-02-control-01.zip).

@@ -80,3 +80,5 @@ class DashboardActivity : AppCompatActivity() {
 *Screenshot shows the biometric authentication prompt before logout.*
 
 > Note: On devices without enrolled biometrics, `showLogoutConfirmation()` shows an ordinary dialog, which an accessibility service can click. Use the device credential as the fallback (`BIOMETRIC_STRONG or DEVICE_CREDENTIAL` in `BiometricPrompt`) instead of a plain dialog, and test the control on a device with no biometrics enrolled.
+
+The source code with the implemented control can be found [here](control-examples/android-platform-feature-05-risk-01-control-01.zip).

@@ -37,3 +37,5 @@ class MainActivity : ReactActivity() {
 ```
 
 *Code block shows implementation of `window.setHideOverlayWindows(true)`*
+
+The source code with the implemented control can be found [here](control-examples/android-platform-feature-04-risk-01-control-01.zip).

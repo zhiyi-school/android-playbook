@@ -79,3 +79,5 @@ protected void onCreate(Bundle savedInstanceState) {
 <img src="assets/feature2_risk2_control2_ss2.png" width="800" alt="Android Studio Logcat displaying redacted email, password, card, and NRIC placeholders">
 
 *Screenshot shows the four sensitive data patterns replaced with safe placeholders in Android Studio Logcat.*
+
+The source code with the implemented control can be found [here](control-examples/android-platform-feature-02-risk-02-control-02.zip).

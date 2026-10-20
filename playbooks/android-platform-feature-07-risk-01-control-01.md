@@ -71,3 +71,5 @@ adb -s <device-ip>:5001 shell "su -c 'cat /data/data/com.demo.protectedapp/files
 ```
 
 *Command shows using root user on the Corellium device to view contents of a file*
+
+The source code with the implemented control can be found [here](control-examples/android-platform-feature-07-risk-01-control-01.zip).

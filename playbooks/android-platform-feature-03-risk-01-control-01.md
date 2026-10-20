@@ -31,3 +31,5 @@ Prevent your application from sending network requests to unauthorised servers b
 *Screenshot shows the application's warning after certificate pinning rejected the certificate presented by Burp Suite.*
 
 When verifying this control, make Burp's CA trusted as described in the note in [android-platform-feature-03-risk-01](android-platform-feature-03-risk-01.md). With only a user-installed CA, the connection fails even without pinning, so the check would pass regardless.
+
+The source code with the implemented control can be found [here](control-examples/android-platform-feature-03-risk-01-control-01.zip).

@@ -77,3 +77,5 @@ Prevent the application from executing when a HTTP Proxy is detected by displayi
 <img src="assets/feature3_risk1_control2_ss1.png" width="800" alt="HTTP proxy detection messages in the application logs">
 
 *Screenshot shows HTTP proxy detection messages in the application logs.*
+
+The source code with the implemented control can be found [here](control-examples/android-platform-feature-03-risk-01-control-02.zip).

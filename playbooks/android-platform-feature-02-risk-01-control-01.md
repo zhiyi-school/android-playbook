@@ -72,3 +72,5 @@ private SecretKey getOrCreateKey() throws Exception {
 <img src="assets/feature2_risk1_control1_ss2.png" width="800" alt="Encrypted data in the stored preferences file">
 
 *Screenshot shows encrypted data in the stored preferences file.*
+
+The source code with the implemented control can be found [here](control-examples/android-platform-feature-02-risk-01-control-01.zip).
