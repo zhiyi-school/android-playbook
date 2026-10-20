@@ -6,15 +6,13 @@ Prevent unauthorised programmatic operations like logging out
 
 ### Description
 
-Prevent unauthorised programmatic operations like logging out by requiring user verification through biometric authentication. A logout button calls initiateLogoutBiometricAuth(), which triggers the biometric authentication prompt
+Prevent unauthorised programmatic operations like logging out by requiring user verification through biometric authentication. A logout button calls `initiateLogoutBiometricAuth()`, which triggers the biometric authentication prompt.
 
 ### Demonstration
 
 #### 01. Prevent unauthorised programmatic operations like logging out
 
-Prevent unauthorised programmatic operations like logging out by requiring user verification through biometric authentication. A logout button calls initiateLogoutBiometricAuth(), which triggers the biometric authentication prompt
-
-*Code excerpt from the screenshot (partial):*
+Prevent unauthorised programmatic operations like logging out by requiring user verification through biometric authentication. A logout button calls `initiateLogoutBiometricAuth()`, which triggers the biometric authentication prompt.
 
 ```kotlin
 class DashboardActivity : AppCompatActivity() {
@@ -75,6 +73,10 @@ class DashboardActivity : AppCompatActivity() {
     }
 ```
 
+*Code block shows implementation of authentication for logout function*
+
 <img src="assets/feature5_risk1_control1_ss1.png" width="800" alt="The biometric authentication prompt before logout">
 
 *Screenshot shows the biometric authentication prompt before logout.*
+
+> Note: On devices without enrolled biometrics, `showLogoutConfirmation()` shows an ordinary dialog, which an accessibility service can click. Use the device credential as the fallback (`BIOMETRIC_STRONG or DEVICE_CREDENTIAL` in `BiometricPrompt`) instead of a plain dialog, and test the control on a device with no biometrics enrolled.

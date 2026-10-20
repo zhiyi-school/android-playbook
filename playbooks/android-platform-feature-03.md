@@ -6,12 +6,7 @@ HTTP Proxy
 
 ### Description
 
-The Android platform provides HTTP Proxy feature.
-
-### Additional context
-
-HTTP Proxy is a feature that allows all network traffic to be routed from an Android Virtual Device through an intermediary proxy server before it reaches the internet. Proxies are usually used for corporate network access or content filtering..
-
+HTTP Proxy is a feature that allows all network traffic to be routed from an Android device through an intermediary proxy server before it reaches the internet. Proxies are usually used for corporate network access or content filtering.
 ### Demonstration
 
 #### 01. Prepare the environment
@@ -23,15 +18,7 @@ Set up the required environment with:
 
 #### 02. Configure Burp Suite
 
-Configure Burp Suite to listen on all network interfaces of the host computer running Burp so the AVD can connect to it by launching Burp, clicking ‘Next’, selecting ‘Start Burp’, navigating to the ‘Proxy’ tab, opening ‘Proxy Settings’, selecting the existing listener at 127.0.0.1:8080, clicking ‘Edit’, changing the binding to ‘All Interfaces’, and clicking ‘OK’ to apply the changes
-
-<img src="assets/feature3_ss1.png" width="800" alt="The new project setup screen in Burp Suite">
-
-*Screenshot shows the new project setup screen in Burp Suite.*
-
-<img src="assets/feature3_ss2.png" width="800" alt="The configuration screen before starting Burp Suite">
-
-*Screenshot shows the configuration screen before starting Burp Suite.*
+Configure Burp Suite to accept connections from the test device. Launch Burp, open the `Proxy` tab, and select `Proxy settings`. Under `Proxy listeners`, click `Add`, set `Bind to port` to `8081`, set `Bind to address` to `All interfaces`, and click `OK`.
 
 <img src="assets/feature3_ss3.png" width="800" alt="The Proxy tab highlighted in Burp Suite">
 
@@ -43,39 +30,66 @@ Configure Burp Suite to listen on all network interfaces of the host computer ru
 
 <img src="assets/feature3_ss5.png" width="800" alt="The proxy listener settings and edit option">
 
-*Screenshot shows the proxy listener settings and edit option.*
+*Screenshot shows the proxy listener settings with Add option highlighted.*
 
 <img src="assets/feature3_ss6.png" width="800" alt="The listener binding set to All interfaces">
 
-*Screenshot shows the listener binding set to `All interfaces`.*
+*Screenshot shows the adding a listener with bind to port set to `8081` and binding set to `All interfaces`.*
 
-#### 03. Configure Android Debug Bridge (ADB)
+#### 03. Route the device's traffic through Burp
 
-Configure Android Debug Bridge (ADB) to set the AVD’s HTTP proxy to the host computer’s IP address and Burp port so traffic from the AVD is routed through Burp by launching the AVD, opening an ADB shell (adb shell), finding the host IP using ipconfig or ifconfig, and running settings put global http_proxy <HOST_IP>:8080
+On the host computer, find its IP address by running `ipconfig` (Windows) or `ifconfig` (macOS/Linux). Then set the test device's global HTTP proxy to that address and the Burp listener port:
+
+```cmd
+adb shell settings put global http_proxy <HOST_IP>:8081
+```
+
+When testing is finished, remove the proxy setting:
+
+```cmd
+adb shell settings put global http_proxy :0
+```
 
 #### 04. Export Burp Suite’s CA certificate
 
-To enable interception of HTTPS traffic: Export Burp Suite’s CA certificate in DER format to create a certificate file (ca.crt) that will be installed into the AVD’s trusted credential store
+To enable interception of HTTPS traffic: Export Burp Suite’s CA certificate in DER format to create a certificate file (`ca.crt`) that will be installed into the test device’s trusted credential store.
 
 <img src="assets/feature3_ss7.png" width="800" alt="The certificate export dialog with the DER format selected">
 
 *Screenshot shows the certificate export dialog with the DER format selected.*
 
-#### 05. Transfer the ca.crt file
+#### 05. Transfer the `ca.crt` file
 
-To enable interception of HTTPS traffic: Transfer the ca.crt file from the host computer to the AVD using ADB so that the Android system can access and install it as a trusted CA certificate
+To enable interception of HTTPS traffic: Transfer the ca.crt file from the host computer to the test device using ADB so that the Android system can access and install it as a trusted CA certificate.
 
 ```cmd
-adb -s emulator-<id> push ca.crt /sdcard/Download/ca.crt
+adb push ca.crt /sdcard/Download/ca.crt
 ```
 
 #### 06. Install the CA certificate
 
-To enable interception of HTTPS traffic: Install the CA certificate on the Android Virtual Device by navigating to Settings → Security → Encryption & Credentials → Install a Certificate → CA Certificate and selecting the uploaded ca.crt file to allow Android system to trust Burp’s generated certificates and enable HTTPS traffic inspection
+To enable interception of HTTPS traffic: open `Settings`, search for `CA certificate`, select the option to install a CA certificate, and choose the transferred `ca.crt` file. 
 
 <img src="assets/feature3_ss8.png" width="800" alt="The Android settings screens for installing a CA certificate">
 
 *Screenshot shows the Android settings screens for installing a CA certificate.*
+
+> Note: Since Android 7 (API level 24), apps trust user-installed CA certificates only if their network security configuration allows it. Most apps do not, so their HTTPS connections fail through Burp whether or not they use certificate pinning. A failed connection at this point does not show that the app pins certificates. To test the app's own behaviour, use one of the following:
+>
+> - A debug build of the app whose network security configuration trusts user certificates in `<debug-overrides>`
+> - A rooted test device, such as the Corellium device in [android-platform-feature-07](android-platform-feature-07.md), with Burp's CA installed as a system certificate. On Android 14 and later, the system store is under `/apex/com.android.conscrypt/cacerts`.
+
+```xml
+<network-security-config>
+    <debug-overrides>
+        <trust-anchors>
+            <certificates src="user" />
+        </trust-anchors>
+    </debug-overrides>
+</network-security-config>
+```
+
+*Code block shows a network security configuration that trusts user certificates in debug builds only*
 
 Because the Android platform provides HTTP Proxy feature, your app is at risk of:
 

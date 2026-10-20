@@ -6,13 +6,13 @@ Prevent access to private data directory information
 
 ### Description
 
-Prevent access to private data directory information by encrypting sensitive data at rest using AES-256-GCM encryption with a SecretKey securely stored in the Android Keystore
+Prevent access to private data directory information by encrypting sensitive data at rest using AES-256-GCM encryption with a SecretKey securely stored in the Android Keystore.
 
 ### Demonstration
 
 #### 01. Prevent access to private data directory information
 
-Prevent access to private data directory information by encrypting sensitive data at rest using AES-256-GCM encryption with a SecretKey securely stored in the Android Keystore
+Prevent access to private data directory information by encrypting sensitive data at rest using AES-256-GCM encryption with a SecretKey securely stored in the Android Keystore.
 
 ```kotlin
 // ── Keystore helpers ────────────────────────────────────────────────
@@ -56,10 +56,18 @@ private fun decrypt(blob: ByteArray): ByteArray {
 }
 ```
 
-```cmd
-adb -s emulator-5554 shell "su -c 'ls -la /data/data/com.demo.protectedapp/files/'"
-```
+*Code block shows implementation of AES-256-GCM encryption with SecretKey*
+
+Repeat the root access commands from the risk on the Corellium device and confirm that `pii.json` now contains ciphertext instead of readable data.
 
 ```cmd
-adb -s emulator-5554 shell "su -c 'cat /data/data/com.demo.protectedapp/files/pii.json'"
+adb -s <device-ip>:5001 shell "su -c 'ls -la /data/data/com.demo.protectedapp/files/'"
 ```
+
+*Command shows using root user on the Corellium device to list file directories*
+
+```cmd
+adb -s <device-ip>:5001 shell "su -c 'cat /data/data/com.demo.protectedapp/files/pii.json'"
+```
+
+*Command shows using root user on the Corellium device to view contents of a file*

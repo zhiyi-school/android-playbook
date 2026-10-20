@@ -19,7 +19,7 @@ Set up the required environment with:
 
 #### 02. Create a malicious application
 
-Create a malicious application by declaring an accessibility service in the manifest with android.permission.BIND_ACCESSIBILITY_SERVICE to register the application as an accessibility service
+Create a malicious application by declaring an accessibility service in the manifest with `android.permission.BIND_ACCESSIBILITY_SERVICE` to register the application as an accessibility service.
 
 ```xml
 <service
@@ -35,9 +35,15 @@ Create a malicious application by declaring an accessibility service in the mani
 </service>
 ```
 
+*Code block shows Manifest.xml with `android.permission.BIND_ACCESSIBILITY_SERVICE`*
+
 #### 03. Define how the accessibility service operates
 
-Define how the accessibility service operates by (a) creating an XML configuration file in @xml/accessibility_service_config_event to specify the accessibility event types to capture (e.g., TYPE_VIEW_TEXT_CHANGED, TYPE_VIEW_FOCUSED, TYPE_VIEW_CLICKED), and (b) implementing a service class (e.g., .EventListenerAccessibilityService) that handles the captured accessibility events and persists the collected data to local storage after the user grants accessibility permission
+Define how the accessibility service operates by:
+
+(a) creating an XML configuration file in `@xml/accessibility_service_config_event` to specify the accessibility event types to capture (e.g., `TYPE_VIEW_TEXT_CHANGED`, `TYPE_VIEW_FOCUSED`, `TYPE_VIEW_CLICKED`), and 
+
+(b) implementing a service class (e.g., `.EventListenerAccessibilityService`) that handles the captured accessibility events and persists the collected data to local storage after the user grants accessibility permission.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -47,6 +53,8 @@ Define how the accessibility service operates by (a) creating an XML configurati
     android:canRetrieveWindowContent="true"
     android:description="@string/service_description" />
 ```
+
+*Code block shows the accessibility service configuration file (`res/xml/<file name>.xml`)*.
 
 ```kotlin
 override fun onAccessibilityEvent(event: AccessibilityEvent?) {
@@ -81,6 +89,8 @@ override fun onAccessibilityEvent(event: AccessibilityEvent?) {
 }
 ```
 
+*Code block shows malicious code logic for logging events*
+
 ```kotlin
 private fun handleFocusEvent(event: AccessibilityEvent, packageName: String) {
     try {
@@ -109,6 +119,8 @@ private fun handleFocusEvent(event: AccessibilityEvent, packageName: String) {
     }
 }
 ```
+
+*Code block shows malicious code logic for detecting change of screen focus*
 
 ```kotlin
 private fun handleTextChangeEvent(event: AccessibilityEvent, packageName: String) {
@@ -151,6 +163,8 @@ private fun handleTextChangeEvent(event: AccessibilityEvent, packageName: String
 }
 ```
 
+*Code block shows malicious code logic for detecting change of text within text fields*
+
 ```kotlin
 private fun handleClickEvent(event: AccessibilityEvent, packageName: String) {
     try {
@@ -182,9 +196,11 @@ private fun handleClickEvent(event: AccessibilityEvent, packageName: String) {
 }
 ```
 
+*Code block shows malicious code logic for detecting input and button presses*
+
 #### 04. Install the malicious application
 
-Install the malicious application on the device, perform the steps listed in [android-platform-feature-05](android-platform-feature-05.md), and then launch and use the benign application to trigger accessibility event capture
+Install the malicious application on the device, perform the steps listed in [android-platform-feature-05](android-platform-feature-05.md), and then launch and use the benign application to trigger accessibility event capture.
 
 <img src="assets/feature5_risk2_ss1.png" width="800" alt="The system prompt requesting permission to control the device">
 
@@ -193,3 +209,24 @@ Install the malicious application on the device, perform the steps listed in [an
 <img src="assets/feature5_risk2_ss2.png" width="800" alt="Captured accessibility events in the Event Spy interface">
 
 *Screenshot shows captured accessibility events in the Event Spy interface.*
+
+#### 05. View the apps listed
+
+Navigate to `Settings → Accessibility` to view the apps listed under the `Downloaded apps` section that provide accessibility services.
+
+<img src="assets/feature5_ss1.png" width="800" alt="Downloaded applications listed in Accessibility settings">
+
+*Screenshot shows downloaded applications listed in Accessibility settings.*
+
+#### 06. Activate its accessibility service
+
+Select an app and toggle `Use <app name>` to activate its accessibility service.
+
+<img src="assets/feature5_ss2.png" width="800" alt="The toggle for enabling an application&#x27;s accessibility service">
+
+*Screenshot shows the toggle for enabling an application's accessibility service.*
+
+
+Android-Platform-Feature-05-Risk-02 control measures:
+
+- [android-platform-feature-05-risk-02-control-01](android-platform-feature-05-risk-02-control-01.md)

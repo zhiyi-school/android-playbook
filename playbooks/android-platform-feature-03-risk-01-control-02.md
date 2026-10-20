@@ -6,13 +6,13 @@ Detect an active HTTP proxy
 
 ### Description
 
-Detect an active HTTP proxy by checking the mobile device’s network configuration using ConnectivityManager and ProxySelector during the onCreate() and onResume() methods
+Detect an active HTTP proxy by checking the mobile device’s network configuration using ConnectivityManager and ProxySelector during the `onCreate()` and `onResume()` methods.
 
 ### Demonstration
 
 #### 01. Detect an active HTTP proxy
 
-Detect an active HTTP proxy by checking the mobile device’s network configuration using ConnectivityManager and ProxySelector during the onCreate() and onResume() methods
+Detect an active HTTP proxy by checking the mobile device’s network configuration using ConnectivityManager and ProxySelector during the onCreate() and onResume() methods.
 
 ```java
 public static boolean isProxySetViaConnectivityManager(Context context) {
@@ -72,7 +72,7 @@ public static boolean isVpnActive(Context context) {
 
 #### 02. Prevent the application from executing when a HTTP Proxy is detected
 
-Prevent the application from executing when a HTTP Proxy is detected by displaying a non-cancellable alert with a button that forces the user to terminate the application
+Prevent the application from executing when a HTTP Proxy is detected by displaying a non-cancellable alert with a button that forces the user to terminate the application.
 
 <img src="assets/feature3_risk1_control2_ss1.png" width="800" alt="HTTP proxy detection messages in the application logs">
 

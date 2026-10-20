@@ -19,9 +19,7 @@ Set up the required environment with:
 
 #### 02. Create a malicious application
 
-Create a malicious application by adding the android.permission.SYSTEM_ALERT_WINDOW permission to the manifest and implementing logic to invoke windowManager.addView() (e.g., within showOverlay()) to display an overlay when the malicious application runs in the background
-
-*Code excerpt from the screenshot (partial):*
+Create a malicious application by adding the `android.permission.SYSTEM_ALERT_WINDOW` permission to the manifest and implementing logic to invoke `windowManager.addView()` (e.g., within `showOverlay()`) to display an overlay when the malicious application runs in the background.
 
 ```xml
 <uses-permission
@@ -37,7 +35,7 @@ Create a malicious application by adding the android.permission.SYSTEM_ALERT_WIN
     android:icon="@mipmap/app_icon"
 ```
 
-*Code excerpt from the screenshot (partial):*
+*Code block shows Manifest.xml file with `android.permission.SYSTEM_ALERT_WINDOW` permission*
 
 ```kotlin
 private fun checkIfAppInBackground() {
@@ -67,7 +65,7 @@ private fun isAppInBackground(): Boolean {
                 }
 ```
 
-*Code excerpt from the screenshot (partial):*
+*Code block shows implementation of malicious overlay function*
 
 ```kotlin
 private fun showOverlay() {
@@ -89,7 +87,7 @@ private fun showOverlay() {
             WindowManager.LayoutParams.MATCH_PARENT,
             WindowManager.LayoutParams.WRAP_CONTENT,
             layoutType,
-            WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
+			WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL,
             PixelFormat.TRANSLUCENT
         )
 
@@ -99,10 +97,44 @@ private fun showOverlay() {
         isOverlayShowing = true
 ```
 
+*Code block shows implementation of show overlay function*
+
+The overlay must be focusable to receive keyboard input. Design `overlay_layout` to imitate the target app's sign-in form, with username and password fields, and save what the user types into it.
+
 #### 03. Install the malicious application
 
-Install the malicious application on the device, perform the steps listed in [android-platform-feature-04](android-platform-feature-04.md), and then launch the application
+Install the malicious application on the device, perform the steps listed in [android-platform-feature-04](android-platform-feature-04.md), and then launch the application.
+
+```cmd
+adb install <malicious_apk>
+```
+
+*Code block installs malicious APK*
 
 <img src="assets/feature4_risk1_ss1.png" width="800" alt="An overlay displayed above the target application&#x27;s interface">
 
 *Screenshot shows an overlay displayed above the target application's interface.*
+
+#### 04. Allow the malicious application to display over other apps
+
+Navigate to `Settings → Apps → Special app access → Display over other apps`, select the malicious application, and turn on `Allow display over other apps`.
+
+<img src="assets/feature4_ss1.png" width="800" alt="The list of applications in Display over other apps settings">
+
+*Screenshot shows the list of applications in `Display over other apps` settings.*
+
+#### 05. Trigger the overlay over the target app
+
+Launch the malicious application, then open the target app's sign-in screen. The malicious application shows its overlay once it moves to the background.
+
+<img src="assets/feature4_ss2.png" width="800" alt="The Allow display over other apps toggle enabled for an application">
+
+*Screenshot shows the `Allow display over other apps` toggle enabled for an application.*
+
+#### 06. Check for captured input
+
+Enter test credentials into the overlay, then open the malicious application and confirm it recorded them.
+
+Android-Platform-Feature-04-Risk-01 control measures:
+
+- [android-platform-feature-04-risk-01-control-01](android-platform-feature-04-risk-01-control-01.md)

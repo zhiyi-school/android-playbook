@@ -6,10 +6,6 @@ Overlay
 
 ### Description
 
-The Android platform provides overlay feature.
-
-### Additional context
-
 Overlay is a feature that allows applications to display content on top of other applications’ user interfaces.
 
 ### Demonstration
@@ -23,7 +19,7 @@ Set up the required environment with:
 
 #### 02. View the list of apps
 
-Navigate to “Settings” → “Apps” → “Special app access” → “Display over other apps” to view the list of apps that can display over other apps
+Navigate to `Settings → Apps → Special app access → Display over other apps` to view the list of apps that can display over other apps.
 
 <img src="assets/feature4_ss1.png" width="800" alt="The list of applications in Display over other apps settings">
 
@@ -31,7 +27,7 @@ Navigate to “Settings” → “Apps” → “Special app access” → “Di
 
 #### 03. Select an app
 
-Select an app and toggle “Allow display over other apps” to allow it to display over other apps
+Select an app and toggle `Allow display over other apps` to allow it to display over other apps.
 
 <img src="assets/feature4_ss2.png" width="800" alt="The Allow display over other apps toggle enabled for an application">
 

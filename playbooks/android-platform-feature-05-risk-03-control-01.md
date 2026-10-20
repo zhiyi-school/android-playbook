@@ -6,15 +6,13 @@ Prevent on-screen text capture
 
 ### Description
 
-Prevent on-screen text capture by setting android:importantForAccessibility=”noHideDescendants”on views in the layout XML. This prevents the view and all its child views from being exposed to accessibility services, blocking events that could otherwise be used to read sensitive text
+Prevent on-screen text capture by setting `android:importantForAccessibility=”noHideDescendants”` on views in the layout XML. This prevents the view and all its child views from being exposed to accessibility services, blocking events that could otherwise be used to read sensitive text.
 
 ### Demonstration
 
 #### 01. Prevent on-screen text capture
 
-Prevent on-screen text capture by setting android:importantForAccessibility=”noHideDescendants”on views in the layout XML. This prevents the view and all its child views from being exposed to accessibility services, blocking events that could otherwise be used to read sensitive text
-
-*Code excerpt from the screenshot (partial):*
+Prevent on-screen text capture by setting `android:importantForAccessibility="noHideDescendants"` on views in the layout XML. This hides the view and all its child views from accessibility services that use default settings, blocking events that could otherwise be used to read sensitive text.
 
 ```xml
 <!-- Top Bar - PROTECTED: Hidden from accessibility (FX02b-C01) -->
@@ -82,3 +80,10 @@ Prevent on-screen text capture by setting android:importantForAccessibility=”n
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 ```
+
+*Code block shows the layout XML with `android:importantForAccessibility` set*
+
+> Note: This does not stop the screenshots that the accessibility service in the risk takes with `GLOBAL_ACTION_TAKE_SCREENSHOT`. Set `FLAG_SECURE` on the window, as in [android-platform-feature-06-risk-01-control-01](android-platform-feature-06-risk-01-control-01.md), to block them.
+
+> Note: Accessibility services can request views marked as not important for accessibility by setting `flagIncludeNotImportantViews` in their configuration. Whether this exposes views hidden with `noHideDescendants` has not yet been tested in this playbook. When verifying this control, also test it against an accessibility service that sets this flag. Hiding these views also stops screen readers such as TalkBack from reading them.
+

@@ -6,15 +6,13 @@ Detect modifications to your application
 
 ### Description
 
-Detect modifications to your application by calculating the SHA-256 signature hash at runtime and comparing it to a hardcoded expected value
+Detect modifications to your application by calculating the SHA-256 signature hash at runtime and comparing it to a hardcoded expected value.
 
 ### Demonstration
 
 #### 01. Detect modifications to your application
 
-Detect modifications to your application by calculating the SHA-256 signature hash at runtime and comparing it to a hardcoded expected value
-
-*Code excerpt from the screenshot (partial):*
+Detect modifications to your application by calculating the SHA-256 signature hash at runtime and comparing it to a hardcoded expected value.
 
 ```java
 public class MainActivity extends AppCompatActivity {
@@ -44,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
         TextView statusText = findViewById(R.id.statusText);
         statusText.setText("✓ Signature verification passed!\n\nThis app is authentic and has not been modified.");
 ```
+
+*Code block shows main logic behind verifying the signature hash at runtime*
 
 ```java
 private static boolean verifySignatureHash(Signature signature) {
@@ -79,14 +79,22 @@ private static boolean verifySignatureHash(Signature signature) {
 }
 ```
 
+*Code block shows implementation of verifying the signature hash*
+
 <img src="assets/feature1_risk2_control1_ss1.png" width="800" alt="The actual and expected SHA-256 hashes in the application logs">
 
 *Screenshot shows the actual and expected SHA-256 hashes in the application logs.*
 
+> Note: If the app uses Play App Signing, Google re-signs it and the certificate on users' devices is the app signing key, not your upload key. Set `EXPECTED_SIGNATURE_HASH` to the SHA-256 certificate fingerprint of the app signing key shown on the app signing page in Play Console. Otherwise every install from Google Play is reported as tampered.
+
 #### 02. Prevent your application from executing when modifications to your application are detected
 
-Prevent your application from executing when modifications to your application are detected by displaying a non-cancellable dialog
+Prevent your application from executing when modifications to your application are detected by displaying a non-cancellable dialog.
 
 <img src="assets/feature1_risk2_control1_ss2.png" width="800" alt="An integrity verification warning displayed by the application">
 
 *Screenshot shows an integrity verification warning displayed by the application.*
+
+<img src="assets/feature1_risk2_control1_ss3.png" width="800" alt="Android Studio Logcat showing a signing certificate mismatch and blocked application initialization">
+
+*Screenshot shows different actual and expected SHA-256 hashes, failed signature verification, and blocked application initialization in Android Studio Logcat.*

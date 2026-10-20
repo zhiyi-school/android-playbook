@@ -17,19 +17,29 @@ Set up the required environment with:
 * A physical Samsung A34 running Android 16 (api level 36)
 * A physical Huawei P50 Pro running HarmonyOS 4.2.0 (Android API level 31)
 
-#### 02. Create a malicious application
+#### 02. Start screen recording
 
-Create a malicious application by declaring a foreground service in the manifest with foregroundServiceType="mediaProjection" to register the application’s screen capture capability
+Swipe down from the top of the device screen to open `Quick Settings`, then locate and tap `Screen record`. 
+
+> Note: Screen recording in the application does not require any manual setup through `Quick Settings`. The app can initiate screen recording programmatically, but it becomes active only after the user grants permission via the system prompt at runtime. The `Quick Settings` steps are shown here to demonstrate how screen recording works.
+
+<img src="assets/feature6_ss1.png" width="800" alt="The screen recording control highlighted in Quick Settings">
+
+*Screenshot shows the screen recording control highlighted in` Quick Settings`.*
+
+#### 03. Create a malicious application
+
+Create a malicious application by declaring a foreground service in the manifest with `foregroundServiceType="mediaProjection"` to register the application’s screen capture capability.
 
 ```xml
 <!-- Foreground service for persistent capture -->
 <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
 <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION"/>
-
-<!-- Screen projection/capture permission -->
-<uses-permission android:name="android.permission.CAPTURE_VIDEO_OUTPUT"/>
-<uses-permission android:name="android.permission.CAPTURE_SECURE_VIDEO_OUTPUT"/>
 ```
+
+*Code block shows the foreground service permissions in AndroidManifest.xml*
+
+> Note: Third-party apps cannot be granted `CAPTURE_VIDEO_OUTPUT` or `CAPTURE_SECURE_VIDEO_OUTPUT`. They capture the screen through `MediaProjection`, which requires the user to accept a consent prompt.
 
 ```xml
 <service
@@ -39,9 +49,11 @@ Create a malicious application by declaring a foreground service in the manifest
     android:foregroundServiceType="mediaProjection" />
 ```
 
-#### 03. Define how the screen capture service operates
+*Code block shows Manifest.xml with screen capture service*
 
-Define how the screen capture service operates by implementing a service class (e.g., .ScreenCaptureService) that requests explicit user permission for screen recording, captures the device screen, and persists the recorded output
+#### 04. Define how the screen capture service operates
+
+Define how the screen capture service operates by implementing a service class (e.g., `.ScreenCaptureService`) that requests explicit user permission for screen recording, captures the device screen, and persists the recorded output.
 
 ```kotlin
 @ReactMethod
@@ -66,6 +78,12 @@ fun requestScreenCapturePermission(promise: Promise) {
 }
 ```
 
+*Code block shows malicious code logic for screen capture*
+
+#### 05. Record the target app
+
+Install and launch the malicious application, start its screen capture, and accept the system prompt. Open the target app and display the information to be tested, then stop the capture and review the saved recording for sensitive information.
+
 <img src="assets/feature6_risk1_ss1.png" width="800" alt="The system prompt requesting permission to record the screen">
 
 *Screenshot shows the system prompt requesting permission to record the screen.*
@@ -77,3 +95,7 @@ fun requestScreenCapturePermission(promise: Promise) {
 <img src="assets/feature6_risk1_ss3.png" width="800" alt="Saved screen recordings in Device Explorer">
 
 *Screenshot shows saved screen recordings in Device Explorer.*
+
+Android-Platform-Feature-06-Risk-01 control measures:
+
+- [android-platform-feature-06-risk-01-control-01](android-platform-feature-06-risk-01-control-01.md)

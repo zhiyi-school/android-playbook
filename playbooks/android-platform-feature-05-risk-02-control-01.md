@@ -6,13 +6,19 @@ Prevent user activities from being captured
 
 ### Description
 
-Prevent user activities from being captured by accessibility services by setting android:importantForAccessibility="no" on views in the layout XML. This stops TYPE_VIEW_TEXT_CHANGED events from being sent for that view, so text input cannot be captured
+Prevent user activities from being captured by accessibility services by setting `android:importantForAccessibility="no"` on views in the layout XML. This stops accessibility services that use default settings from receiving events and node information for these views. A service that sets `flagIncludeNotImportantViews` in its configuration still receives them, so test the control against such a service. Hiding sign-in fields from accessibility also stops screen readers such as TalkBack from reading them.
+
+> Note: On Android 14 (API level 34) and later, `android:accessibilityDataSensitive="yes"` limits these views to accessibility services that declare `android:isAccessibilityTool="true"`, and keeps them available to TalkBack.
 
 ### Demonstration
 
 #### 01. Prevent user activities from being captured
 
-Prevent user activities from being captured by accessibility services by setting android:importantForAccessibility="no" on views in the layout XML. This stops TYPE_VIEW_TEXT_CHANGED events from being sent for that view, so text input cannot be captured
+Prevent user activities from being captured by accessibility services by setting `android:importantForAccessibility="no"` on views in the layout XML. 
+
+This stops accessibility services that use default settings from receiving events and node information for these views. A service that sets `flagIncludeNotImportantViews` in its configuration still receives them, so test the control against such a service. Hiding sign-in fields from accessibility also stops screen readers such as TalkBack from reading them.
+
+> Note: On Android 14 (API level 34) and later, `android:accessibilityDataSensitive="yes"` limits these views to accessibility services that declare `android:isAccessibilityTool="true"`, and keeps them available to TalkBack.
 
 ```xml
 <com.google.android.material.textfield.TextInputLayout
@@ -70,3 +76,5 @@ Prevent user activities from being captured by accessibility services by setting
     android:layout_marginTop="32dp"
     android:importantForAccessibility="no" /> <!-- Login Button - PROTECTED: Hidden from accessibility (FX02a-C01) -->
 ```
+
+*Code block shows the layout XML with `android:importantForAccessibility` set*

@@ -6,15 +6,21 @@ Prevent overlay windows from appearing over your app
 
 ### Description
 
-Prevent overlay windows from appearing over your app by calling window.setHideOverlayWindows(true) in onResume()
+Prevent overlay windows from appearing over your app by calling window.setHideOverlayWindows(true) in onResume().
 
 ### Demonstration
 
 #### 01. Prevent overlay windows from appearing over your app
 
-Prevent overlay windows from appearing over your app by calling window.setHideOverlayWindows(true) in onResume()
+Declare the permission in `AndroidManifest.xml`. `setHideOverlayWindows()` is available from Android 12 (API level 31).
 
-*Code excerpt from the screenshot (partial):*
+```xml
+<uses-permission android:name="android.permission.HIDE_OVERLAY_WINDOWS" />
+```
+
+*Code block shows adding `setHideOverlayWindows()` permission in `AndroidManifest.xml`.*
+
+Prevent overlay windows from appearing over your app by calling `window.setHideOverlayWindows(true)` in `onResume()`.
 
 ```kotlin
 class MainActivity : ReactActivity() {
@@ -24,8 +30,10 @@ class MainActivity : ReactActivity() {
 
     override fun onResume() {
         super.onResume()
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             window.setHideOverlayWindows(true)
         }
     }
 ```
+
+*Code block shows implementation of `window.setHideOverlayWindows(true)`*

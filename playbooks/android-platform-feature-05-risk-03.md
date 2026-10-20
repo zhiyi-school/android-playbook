@@ -19,7 +19,7 @@ Set up the required environment with:
 
 #### 02. Create a malicious application
 
-Create a malicious application by declaring an accessibility service in the manifest with android.permission.BIND_ACCESSIBILITY_SERVICE to register the application as an accessibility service
+Create a malicious application by declaring an accessibility service in the manifest with `android.permission.BIND_ACCESSIBILITY_SERVICE` to register the application as an accessibility service.
 
 ```xml
 <service
@@ -35,9 +35,15 @@ Create a malicious application by declaring an accessibility service in the mani
 </service>
 ```
 
+*Code block shows Manifest.xml with `android.permission.BIND_ACCESSIBILITY_SERVICE`*
+
 #### 03. Define how the accessibility service operates
 
-Define how the accessibility service operates by (a) creating an XML configuration file in @xml/accessibility_service_config_capture to request relevant event types and window content access, and (b) implementing a service class (e.g., .TextScraperAccessibilityService) that listens for TYPE_WINDOW_STATE_CHANGED events, traverses the active UI hierarchy, extracts on-screen text and metadata, captures screenshots periodically, and persists the collected data after the user grants accessibility permission
+Define how the accessibility service operates by 
+
+(a) creating an XML configuration file in `@xml/accessibility_service_config_capture` to request relevant event types and window content access, and 
+
+(b) implementing a service class (e.g., `.TextCaptureAccessibilityService) that listens for `TYPE_WINDOW_STATE_CHANGED` events, traverses the active UI hierarchy, extracts on-screen text and metadata, captures screenshots periodically, and persists the collected data after the user grants accessibility permission.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -52,7 +58,7 @@ Define how the accessibility service operates by (a) creating an XML configurati
     android:notificationTimeout="100" />
 ```
 
-*Code excerpt from the screenshot (partial):*
+*Code block shows the accessibility service configuration file (`res/xml/<file name>.xml`)*.
 
 ```kotlin
 private fun traverseNodeTree(
@@ -113,6 +119,8 @@ private fun traverseNodeTree(
             }
 ```
 
+*Code block shows code logic to scrape for strings on shown on screen*
+
 ```kotlin
 private fun startScreenshotTimer() {
     handler.postDelayed(object : Runnable {
@@ -141,9 +149,11 @@ private fun takeScreenshot() {
 }
 ```
 
+*Code block shows code logic to take a screenshot*
+
 #### 04. Install the malicious application
 
-Install the malicious application on the device, perform the steps listed in [android-platform-feature-05](android-platform-feature-05.md), and then launch and use the benign application to trigger accessibility event capture
+Install the malicious application on the device, perform the steps listed in [android-platform-feature-05](android-platform-feature-05.md), and then launch and use the benign application to trigger accessibility event capture.
 
 <img src="assets/feature5_risk3_ss1.png" width="800" alt="The system prompt requesting permission to control the device">
 
@@ -152,3 +162,24 @@ Install the malicious application on the device, perform the steps listed in [an
 <img src="assets/feature5_risk3_ss2.png" width="800" alt="Captured interface text in the Text Scraper application">
 
 *Screenshot shows captured interface text in the Text Scraper application.*
+
+#### 05. View the apps listed
+
+Navigate to `Settings → Accessibility` to view the apps listed under the `Downloaded apps` section that provide accessibility services.
+
+<img src="assets/feature5_ss1.png" width="800" alt="Downloaded applications listed in Accessibility settings">
+
+*Screenshot shows downloaded applications listed in Accessibility settings.*
+
+#### 06. Activate its accessibility service
+
+Select an app and toggle `Use <app name>` to activate its accessibility service.
+
+<img src="assets/feature5_ss2.png" width="800" alt="The toggle for enabling an application&#x27;s accessibility service">
+
+*Screenshot shows the toggle for enabling an application's accessibility service.*
+
+
+Android-Platform-Feature-05-Risk-03 control measures:
+
+- [android-platform-feature-05-risk-03-control-01](android-platform-feature-05-risk-03-control-01.md)

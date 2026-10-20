@@ -6,13 +6,13 @@ Detect sensitive data patterns in log messages
 
 ### Description
 
-Detect sensitive data patterns in log messages by using regular expressions to identify potential leaks before they reach Logcat
+Detect sensitive data patterns in log messages by using regular expressions to identify potential leaks before they reach Logcat.
 
 ### Demonstration
 
 #### 01. Detect sensitive data patterns in log messages
 
-Detect sensitive data patterns in log messages by using regular expressions to identify potential leaks before they reach Logcat
+Detect sensitive data patterns in log messages by using regular expressions to identify potential leaks before they reach Logcat.
 
 ```java
 private static final String[][] PII_PATTERNS = {
@@ -40,7 +40,7 @@ public static void w(String tag, String msg) { Log.w(tag, sanitize(msg)); }
 
 #### 02. Prevent sensitive data from being exposed in the logs
 
-Prevent sensitive data from being exposed in the logs by replacing them with safe placeholders (e.g. “REDACTED_EMAIL”)
+Prevent sensitive data from being exposed in the logs by replacing them with safe placeholders (e.g. “REDACTED_EMAIL”).
 
 ```java
 @Override
@@ -72,6 +72,10 @@ protected void onCreate(Bundle savedInstanceState) {
 }
 ```
 
-<img src="assets/feature2_risk2_control2_ss1.png" width="800" alt="Redacted log output alongside the application interface">
+<img src="assets/feature2_risk2_control2_ss1.png" width="800" alt="The demo application displaying synthetic inputs before log redaction">
 
-*Screenshot shows redacted log output alongside the application interface.*
+*Screenshot shows the demo application displaying synthetic email, password, card, and NRIC inputs.*
+
+<img src="assets/feature2_risk2_control2_ss2.png" width="800" alt="Android Studio Logcat displaying redacted email, password, card, and NRIC placeholders">
+
+*Screenshot shows the four sensitive data patterns replaced with safe placeholders in Android Studio Logcat.*
