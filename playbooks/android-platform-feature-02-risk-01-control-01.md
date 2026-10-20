@@ -2,7 +2,7 @@
 
 ### Title
 
-Prevent access to private data directory information
+Encrypt stored credentials so they are unreadable through debug access
 
 ### Description
 

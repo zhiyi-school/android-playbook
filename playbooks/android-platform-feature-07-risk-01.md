@@ -2,7 +2,7 @@
 
 ### Title
 
-Accessing the application’s private data directory
+Reading the application’s private files as root
 
 ### Description
 

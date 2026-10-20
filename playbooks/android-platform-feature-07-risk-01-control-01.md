@@ -2,7 +2,7 @@
 
 ### Title
 
-Prevent access to private data directory information
+Encrypt sensitive data at rest so it is unreadable to a root user
 
 ### Description
 

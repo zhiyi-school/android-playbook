@@ -2,7 +2,7 @@
 
 ### Title
 
-Accessing the application’s private data directory
+Browsing the application’s private files via ADB debugging
 
 ### Description
 
