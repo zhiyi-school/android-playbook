@@ -111,10 +111,6 @@ adb install <malicious_apk>
 
 *Code block installs malicious APK*
 
-<img src="assets/feature4_risk1_ss1.png" width="800" alt="An overlay displayed above the target application&#x27;s interface">
-
-*Screenshot shows an overlay displayed above the target application's interface.*
-
 #### 04. Allow the malicious application to display over other apps
 
 Navigate to `Settings → Apps → Special app access → Display over other apps`, select the malicious application, and turn on `Allow display over other apps`.
@@ -123,13 +119,17 @@ Navigate to `Settings → Apps → Special app access → Display over other app
 
 *Screenshot shows the list of applications in `Display over other apps` settings.*
 
+<img src="assets/feature4_ss2.png" width="800" alt="The Allow display over other apps toggle enabled for an application">
+
+*Screenshot shows the `Allow display over other apps` toggle enabled for an application.*
+
 #### 05. Trigger the overlay over the target app
 
 Launch the malicious application, then open the target app's sign-in screen. The malicious application shows its overlay once it moves to the background.
 
-<img src="assets/feature4_ss2.png" width="800" alt="The Allow display over other apps toggle enabled for an application">
+<img src="assets/feature4_risk1_ss1.png" width="800" alt="An overlay displayed above the target application&#x27;s interface">
 
-*Screenshot shows the `Allow display over other apps` toggle enabled for an application.*
+*Screenshot shows an overlay displayed above the target application's interface.*
 
 #### 06. Check for captured input
 
