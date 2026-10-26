@@ -1,0 +1,128 @@
+{
+  "reviewed_on": "2026-10-22",
+  "binary_paths_relative_to": "mobile_playbook_automation repository root",
+  "scope": "Custom risk-test intake binaries, companion helpers and the Demo Bank manual-test fixture. Third-party production apps and the synthetic example_app.ipa placeholder are excluded.",
+  "samples": [
+    {
+      "binary": "artifacts/intake/android/apks/F4_Overlay_Attacker.apk",
+      "binary_sha256": "3536bace59877fd52cd8ed3c27be908d11c1fa849d16d5f1441905940fb67f1c",
+      "package": "com.mobileplaybook.overlay",
+      "risks": [
+        "android-feature-04-risk-01"
+      ],
+      "source_status": "available",
+      "archive": "android-platform-feature-04-risk-01-overlay-attacker-source.zip",
+      "archive_sha256": "90e4e772f036e515481c03d6d0b7cbb7362aeb796b33ff92623372cdcb5da0bf",
+      "note": "Native Java overlay test app; replaces F4_Attacker.apk for automated testing. Standalone source archive only; freshly extracted archive builds with the explicit --output command in ARCHIVE.md. Uses synthetic canary credentials.",
+      "buildable_original_project": true
+    },
+    {
+      "binary": "artifacts/intake/android/apks/F4_Attacker.apk",
+      "binary_sha256": "bc6bb8d8103e7933306ca1b55f354b00ec215fdf2117e942b3dec73628b76f85",
+      "package": "com.overlayonly",
+      "risks": [
+        "android-feature-04-risk-01"
+      ],
+      "source_status": "recovered_from_apk",
+      "archive": "android-platform-feature-04-risk-01-overlay-attacker.zip",
+      "archive_sha256": "8f1d1398eb6964629041c7749dd056d1cb350e386be63e2f5a3ed2a742d71f5f",
+      "note": "Original projects are unavailable. This archive contains decompiled app-owned Java and decoded resources for inspection only; it is not an original or validated buildable project. See README.md and RECOVERY.json inside for warnings and coverage. The preserved Hermes bundle is compiled bytecode, not original JavaScript source. Replaced for automated testing by F4_Overlay_Attacker.apk (com.mobileplaybook.overlay); this recovery is retained for inspection.",
+      "original_source_status": "unavailable_confirmed_by_user",
+      "buildable_original_project": false
+    },
+    {
+      "binary": "artifacts/intake/android/apks/F5R1_Attacker.apk",
+      "binary_sha256": "5730bc6b01a0aaab2ee46a6076be820a7869b92de3f463ebc8615597f05d0f39",
+      "package": "com.malicious.accessibilityattacker",
+      "risks": [
+        "android-feature-05-risk-01"
+      ],
+      "source_status": "recovered_from_apk",
+      "archive": "android-platform-feature-05-risk-01-accessibility-attacker.zip",
+      "archive_sha256": "9982f0622d15a62a235c6968ba5b79912eb24fa7f7fc27fc90a0a0ea604e00d9",
+      "note": "Original projects are unavailable. This archive contains decompiled app-owned Java and decoded resources for inspection only; it is not an original or validated buildable project. See README.md and RECOVERY.json inside for warnings and coverage. Replaced for automated testing by F5R1_Accessibility_Attacker.apk (com.mobileplaybook.accessibility); this recovery is retained for inspection.",
+      "original_source_status": "unavailable_confirmed_by_user",
+      "buildable_original_project": false
+    },
+    {
+      "binary": "artifacts/intake/android/apks/F5R1_Accessibility_Attacker.apk",
+      "binary_sha256": "7c1aea4c75416cebe6dc376a90c115666153e6145083bd5695b9ed2f63630044",
+      "package": "com.mobileplaybook.accessibility",
+      "risks": [
+        "android-feature-05-risk-01"
+      ],
+      "source_status": "available",
+      "archive": "android-platform-feature-05-risk-01-accessibility-attacker-source.zip",
+      "archive_sha256": "b6459be15c907951c6dd8cf9b5cc8e100868f2d443454f034b348849fdc1b10f",
+      "note": "Native Java accessibility test app with the playbook's manifest, service configuration and logout patterns, an optional target-package filter and JSON attack output; replaces F5R1_Attacker.apk for automated testing. Standalone source archive only; freshly extracted archive builds with the explicit --output command in ARCHIVE.md. Not yet runtime-tested on a device.",
+      "buildable_original_project": true
+    },
+    {
+      "binary": "artifacts/intake/android/apks/F5R2_Attacker.apk",
+      "binary_sha256": "8361b1d624f0ea7b989b082397d1d02faee22ac8d377b36ebae917e5f665a484",
+      "package": "com.malicious.eventspy",
+      "risks": [
+        "android-feature-05-risk-02"
+      ],
+      "source_status": "recovered_from_apk",
+      "archive": "android-platform-feature-05-risk-02-event-spy.zip",
+      "archive_sha256": "ab41613d35f85190900c32749e375c6d39506114984943cd1acc6ea25e516fae",
+      "note": "Original projects are unavailable. This archive contains decompiled app-owned Java and decoded resources for inspection only; it is not an original or validated buildable project. See README.md and RECOVERY.json inside for warnings and coverage.",
+      "original_source_status": "unavailable_confirmed_by_user",
+      "buildable_original_project": false
+    },
+    {
+      "binary": "artifacts/intake/android/apks/F5R3_Attacker.apk",
+      "binary_sha256": "0b7a3b4d31b03882072476a69a84b26a59fecb53662832b1f51fba1a9dc25f25",
+      "package": "com.malicious.textscraper",
+      "risks": [
+        "android-feature-05-risk-03"
+      ],
+      "source_status": "recovered_from_apk",
+      "archive": "android-platform-feature-05-risk-03-text-scraper.zip",
+      "archive_sha256": "457af8b00badfe105943e66efaeb0d0fccc61991ebfd862518a503c4576cec74",
+      "note": "Original projects are unavailable. This archive contains decompiled app-owned Java and decoded resources for inspection only; it is not an original or validated buildable project. See README.md and RECOVERY.json inside for warnings and coverage.",
+      "original_source_status": "unavailable_confirmed_by_user",
+      "buildable_original_project": false
+    },
+    {
+      "binary": "artifacts/intake/android/apks/F6_Attacker.apk",
+      "binary_sha256": "e01909ae436a43cef1208fcb7e808d84d2058b4659779b324e4fa953ff0e0a28",
+      "package": "com.capturingeg",
+      "risks": [
+        "android-feature-06-risk-01"
+      ],
+      "source_status": "recovered_from_apk",
+      "archive": "android-platform-feature-06-risk-01-screen-capture-attacker.zip",
+      "archive_sha256": "e5455daa467c2d7a314d3e2f4022ad5a58302a970d5e24a1ff5d4f3079075871",
+      "note": "Original projects are unavailable. This archive contains decompiled app-owned Java and decoded resources for inspection only; it is not an original or validated buildable project. See README.md and RECOVERY.json inside for warnings and coverage. The preserved Hermes bundle is compiled bytecode, not original JavaScript source.",
+      "original_source_status": "unavailable_confirmed_by_user",
+      "buildable_original_project": false
+    },
+    {
+      "binary": "artifacts/companion/android/apks/screen-capture-helper.apk",
+      "binary_sha256": "ba8709f241a61222ce3092f5ae8cb3b16bd309b525f02a182d750882dcfe576c",
+      "package": "com.mobileplaybook.screencapture",
+      "risks": [
+        "android-feature-06-risk-01"
+      ],
+      "source_status": "available",
+      "archive": "android-platform-feature-06-risk-01-screen-capture-helper-source.zip",
+      "archive_sha256": "42d776cf5b1c9e51b4860b0626a029ebd3d149ae3b6e91c1ff0e625aa9997906",
+      "note": "Backend MediaProjection helper; distinct from F6_Attacker.apk. Source: tools/companion_apps/android_screen_capture. Freshly extracted archive builds successfully with the explicit --output command in ARCHIVE.md."
+    },
+    {
+      "binary": "artifacts/manual_testing_android16/demo_victim_app/DemoBank.apk",
+      "binary_sha256": "15cb5f5d5b2c9a7c7b03e0da207d1081f29f19bfd24051fd5c2269e142d9ebcb",
+      "package": "com.playbook.demobank",
+      "risks": [
+        "android-feature-02-risk-02",
+        "android-feature-05-risk-01"
+      ],
+      "source_status": "available",
+      "archive": "android-demo-bank-source.zip",
+      "archive_sha256": "8a3e747075e5b00c591f324ae456b20fcd113351e704a6035b12f439bd6ccd5b",
+      "note": "Deliberately insecure victim used by manual tests; not currently an intake APK. Source: artifacts/manual_testing_android16/demo_victim_app. Freshly extracted archive builds successfully."
+    }
+  ]
+}
