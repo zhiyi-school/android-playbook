@@ -1,0 +1,2358 @@
+{
+  "version": "2.6.2",
+  "summary": {
+    "title": "Android Platform-aware Black-box STRIDE - Clear Labels",
+    "owner": "Tester / device owner",
+    "id": "390bd1b6-c58e-5766-a38d-55fcbcdb48f8",
+    "description": "Platform-aware black-box STRIDE reference; 28 October 2026.\nThe physical device is owned and controlled by the tester. Device/OS architecture\nis known platform context, not an opaque assessment target. Record the actual\nmodel, OS/build, security patch, lock/passcode, backup, permissions, pairing and\ndebug settings in device-profile.txt before applying this template to a target.\nThese values are not supplied yet. Ownership does not imply root/jailbreak,\npermission to bypass sandbox isolation, or an already compromised OS.\n\nOnly the mobile app is opaque within the device. No app-specific internal layers,\nlibraries, algorithms or business logic are asserted. The remote service is also\nopaque, as requested: no database, internal logs or server configuration is drawn.\nRemote communication is a supplied baseline assumption. Exact calls, endpoint\ncount, protocol, TLS, authentication, roles and feature availability must be\nestablished by observation. App and server controls are unverified.\n\nKnown device facilities are expanded: OS entry dispatch, an app-private file\nnamespace, permission-controlled system resources, and iOS Keychain or Android\nKeystore. Their availability is platform knowledge; the app's use and configured\npolicies are unknown. D1 represents an OS-provided private storage location, not\nan assertion about a database or persistence framework. App-private files and the opaque app share the B2 sandbox enclosure.\nB4 highlights file-access policy inside that enclosure.\n\nSolid lines describe baseline external interactions and the known OS delivery\nroute, subject to entry availability. Dashed straight lines with * mark candidate\napp-to-platform relationships only; remove any not observed/applicable. They do\nnot assert that this app uses a permission, Keychain/Keystore or particular files.\nF03/F08 external entry also requires discovery. Each arrow label is centered on\nits own line with a white backing. Only an arrow's own label may cover its line. All exact payloads are unknown.\nPermission and key services are logical platform security responsibilities, not\nclaims about one OS executable process or separate physical hardware.\n\nTester-owned device inspection, settings changes, companion test apps and permitted\ntraffic observation can establish target facts. No categorical exclusion of binary\nanalysis or instrumentation is imposed by the term black-box. Available techniques\nand their privileges must be recorded. Baseline adversaries are an ordinary user,\nan ordinary other-app identity, and an independent network/API caller. Privileged\nlocal manipulation and compromised OS scenarios are explicit conditional variants;\nresults obtained only there must not be reported as ordinary sandbox bypasses.\n\nEvery threat is an untested candidate, Open/severity TBD. No app has been tested.\nPlatform facts are distinguished from observed target facts (none yet), conditional\nassumptions and unknowns. Proposed mitigations do not describe implemented controls.\nVisible operation references alone cannot verify backend audit integrity. Private\nfile or key access can be limited despite device ownership; record limitations.\nNetwork encryption and store flags are UNVERIFIED placeholders where false, not\nfindings of cleartext, no integrity protection or absence of credentials. Local\nplatform flows are OS APIs, not claims of a network protocol or TLS requirement.\n"
+  },
+  "detail": {
+    "contributors": [],
+    "reviewer": "Unassigned",
+    "diagramTop": 1,
+    "threatTop": 26,
+    "diagrams": [
+      {
+        "id": 0,
+        "title": "Android - Platform-aware black-box - clear labels (STRIDE)",
+        "diagramType": "STRIDE",
+        "version": "2.6.2",
+        "thumbnail": "./public/content/images/thumbnail.stride.jpg",
+        "cells": [
+          {
+            "id": "66b29b65-9cec-544c-8bdf-571251cc625c",
+            "shape": "td-text-block",
+            "zIndex": 5,
+            "position": {
+              "x": 320,
+              "y": 10
+            },
+            "size": {
+              "width": 2370,
+              "height": 55
+            },
+            "attrs": {
+              "text": {
+                "text": "Android | Platform-aware black-box STRIDE",
+                "fontSize": 30,
+                "fontFamily": "Arial",
+                "lineHeight": "1.6em",
+                "fill": "#20334d"
+              }
+            },
+            "data": {
+              "name": "Android | Platform-aware black-box STRIDE",
+              "type": "tm.Text",
+              "description": "Clear-label revision; prior platform-aware and original models are preserved.",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "threats": [],
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "id": "6b1259c3-c38a-5525-ba4c-dd27c8931a14",
+            "shape": "td-text-block",
+            "zIndex": 5,
+            "position": {
+              "x": 320,
+              "y": 75
+            },
+            "size": {
+              "width": 2370,
+              "height": 40
+            },
+            "attrs": {
+              "text": {
+                "text": "Tester-owned device | Known OS environment | App and remote implementation unknown",
+                "fontSize": 20,
+                "fontFamily": "Arial",
+                "lineHeight": "1.6em",
+                "fill": "#20334d"
+              }
+            },
+            "data": {
+              "name": "Tester-owned device | Known OS environment | App and remote implementation unknown",
+              "type": "tm.Text",
+              "description": "Platform knowledge does not establish app-specific use or implementation.",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "threats": [],
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "id": "196d0a44-4cdf-5458-8399-86e4a70bdf96",
+            "shape": "actor",
+            "zIndex": 5,
+            "position": {
+              "x": 20,
+              "y": 715
+            },
+            "size": {
+              "width": 260,
+              "height": 130
+            },
+            "attrs": {
+              "text": {
+                "text": "E1 Tester / user\nOwns test device",
+                "fontSize": 20,
+                "fontFamily": "Arial",
+                "lineHeight": "1.6em",
+                "fill": "#20334d"
+              },
+              "body": {
+                "stroke": "#405574",
+                "strokeWidth": 2,
+                "strokeDasharray": "",
+                "fill": "white"
+              }
+            },
+            "data": {
+              "name": "E1 Tester / user\nOwns test device",
+              "type": "tm.Actor",
+              "description": "The tester owns and controls this device and operates test accounts. Device ownership is distinct from app account authority. Another operator is a threat variant, not a separate owner.",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "threats": [],
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "id": "daed0fb8-b3e5-52a4-8d33-9d850188d4bc",
+            "shape": "actor",
+            "zIndex": 5,
+            "position": {
+              "x": 420,
+              "y": 235
+            },
+            "size": {
+              "width": 330,
+              "height": 130
+            },
+            "attrs": {
+              "text": {
+                "text": "E2 Other app / browser\nSeparate app identity",
+                "fontSize": 20,
+                "fontFamily": "Arial",
+                "lineHeight": "1.6em",
+                "fill": "#20334d"
+              },
+              "body": {
+                "stroke": "#405574",
+                "strokeWidth": 2,
+                "strokeDasharray": "",
+                "fill": "white"
+              }
+            },
+            "data": {
+              "name": "E2 Other app / browser\nSeparate app identity",
+              "type": "tm.Actor",
+              "description": "Ordinary companion app/browser supplying external input if a target entry exists. No private-storage access or OS compromise is assumed.",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "threats": [],
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "id": "3e1ba8b4-d548-52c4-b965-ccdc7bce7ec5",
+            "shape": "actor",
+            "zIndex": 5,
+            "position": {
+              "x": 2260,
+              "y": 185
+            },
+            "size": {
+              "width": 360,
+              "height": 140
+            },
+            "attrs": {
+              "text": {
+                "text": "E3 Independent caller\nOwn API client",
+                "fontSize": 20,
+                "fontFamily": "Arial",
+                "lineHeight": "1.6em",
+                "fill": "#20334d"
+              },
+              "body": {
+                "stroke": "#405574",
+                "strokeWidth": 2,
+                "strokeDasharray": "",
+                "fill": "white"
+              }
+            },
+            "data": {
+              "name": "E3 Independent caller\nOwn API client",
+              "type": "tm.Actor",
+              "description": "Test client contacting discovered remote interfaces independently of the app. Device possession grants no server privileges.",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "threats": [],
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "id": "6150de76-854e-527e-9832-84ec27428146",
+            "shape": "process",
+            "zIndex": 5,
+            "position": {
+              "x": 1000,
+              "y": 175
+            },
+            "size": {
+              "width": 400,
+              "height": 250
+            },
+            "attrs": {
+              "text": {
+                "text": "P3 Android entry dispatch\nIntents / links / IPC",
+                "fontSize": 20,
+                "fontFamily": "Arial",
+                "lineHeight": "1.6em",
+                "fill": "#20334d"
+              },
+              "body": {
+                "stroke": "#c82a3e",
+                "strokeWidth": 2.5,
+                "strokeDasharray": "",
+                "fill": "white"
+              }
+            },
+            "data": {
+              "name": "P3 Android entry dispatch\nIntents / links / IPC",
+              "type": "tm.Process",
+              "description": "[PLATFORM FACT] OS-mediated delivery to registered/accessible app entry surfaces. [CONDITIONAL] Specific handlers, associated domains, exported components, caller restrictions and payloads must be discovered. No entry is asserted for every app.",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "threats": [
+                {
+                  "id": "16dba5c4-bdb9-52c0-81a0-ce16455b0583",
+                  "threatId": "16dba5c4-bdb9-52c0-81a0-ce16455b0583",
+                  "number": 24,
+                  "modelType": "STRIDE",
+                  "type": "Elevation of privilege",
+                  "title": "ANDROID-PA-T24: An external caller is delegated the app authority",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "score": "",
+                  "description": "Candidate scenario: An ordinary other app may use an exposed route to trigger privileged app behaviour under the target app identity.\n\nPreconditions: An accessible target entry exists; no assumption that every app exports a route.\n\nTester-owned device evidence to seek: Use a companion test app/browser with ordinary privileges to invoke discovered entries. Compare account state, route verification, caller restrictions and resulting actions. Device ownership is not the caller privilege.\n\nKnowledge: OS facility known; app use and configured policy unknown. No app-specific finding yet.\nReference: https://developer.android.com/privacy-and-security/risks/android-exported",
+                  "mitigation": "Proposed treatment: Restrict exposed entry surfaces and check caller, target resource and user authority before performing protected actions.\n\nClosure: document actual environment, required privileges, observed behaviour and residual risk. Do not infer an internal cause from an external outcome alone."
+                }
+              ],
+              "hasOpenThreats": true
+            }
+          },
+          {
+            "id": "a34b583c-4390-5aa0-9ccc-c2f3d78f0ff4",
+            "shape": "process",
+            "zIndex": 5,
+            "position": {
+              "x": 1020,
+              "y": 600
+            },
+            "size": {
+              "width": 360,
+              "height": 360
+            },
+            "attrs": {
+              "text": {
+                "text": "P1 Android app\nOpaque application\nInternals unknown",
+                "fontSize": 21,
+                "fontFamily": "Arial",
+                "lineHeight": "1.6em",
+                "fill": "#20334d"
+              },
+              "body": {
+                "stroke": "#c82a3e",
+                "strokeWidth": 2.5,
+                "strokeDasharray": "",
+                "fill": "white"
+              }
+            },
+            "data": {
+              "name": "P1 Android app\nOpaque application\nInternals unknown",
+              "type": "tm.Process",
+              "description": "[UNKNOWN APP] One opaque target inside its app identity/sandbox. Inputs, outputs, package attributes and permitted runtime/device observations may establish facts. No internal layering or storage/crypto implementation is asserted.",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "threats": [
+                {
+                  "id": "1fc178d8-b6fd-546c-8328-23a426130026",
+                  "threatId": "1fc178d8-b6fd-546c-8328-23a426130026",
+                  "number": 1,
+                  "modelType": "STRIDE",
+                  "type": "Spoofing",
+                  "title": "ANDROID-PA-T01: Another device operator continues an existing identity",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "score": "",
+                  "description": "Candidate scenario: If protected sessions exist, a person operating the device may act under a previous user's identity.\n\nEvidence to seek on the tester-owned device / remote interface: Observe who can resume protected UI after inactivity, user change or the app's supported lock/logout sequence.\n\nAssessment state: no app-specific observations yet. Features and preconditions must be established before treating this as applicable.\nReference: OWASP MASVS\nhttps://mas.owasp.org/MASVS/\n\nDevice scope: tester-owned and inspectable; available observation privileges must be recorded. App and backend internals remain unknown. Platform/service use is conditional until established.",
+                  "mitigation": "Proposed treatment: Define proportionate session expiry and reauthentication for sensitive operations.\n\nClosure: record relevant observed behaviour and residual risk. Internal controls not externally verifiable remain unknown and require additional evidence; do not claim them verified from this model."
+                },
+                {
+                  "id": "06281a53-8c0a-54f2-af6f-3eab92a6221d",
+                  "threatId": "06281a53-8c0a-54f2-af6f-3eab92a6221d",
+                  "number": 2,
+                  "modelType": "STRIDE",
+                  "type": "Information disclosure",
+                  "title": "ANDROID-PA-T02: Sensitive output is visible outside the intended interaction",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "score": "",
+                  "description": "Candidate scenario: Private values may be exposed on screens, app-switcher previews or copy/paste paths available to the observer.\n\nEvidence to seek on the tester-owned device / remote interface: Inspect only externally available display, backgrounding and clipboard behaviour using test data.\n\nAssessment state: no app-specific observations yet. Features and preconditions must be established before treating this as applicable.\nReference: OWASP MASVS\nhttps://mas.owasp.org/MASVS/\n\nDevice scope: tester-owned and inspectable; available observation privileges must be recorded. App and backend internals remain unknown. Platform/service use is conditional until established.",
+                  "mitigation": "Proposed treatment: Minimize visible sensitive data and apply platform-appropriate display/clipboard handling.\n\nClosure: record relevant observed behaviour and residual risk. Internal controls not externally verifiable remain unknown and require additional evidence; do not claim them verified from this model."
+                },
+                {
+                  "id": "b52a3da4-9f86-5e1d-9e33-e9ac54353c89",
+                  "threatId": "b52a3da4-9f86-5e1d-9e33-e9ac54353c89",
+                  "number": 3,
+                  "modelType": "STRIDE",
+                  "type": "Tampering",
+                  "title": "ANDROID-PA-T03: External entry parameters cause an unintended state change",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "score": "",
+                  "description": "Candidate scenario: If F03 exists, a crafted input may change a destination or action beyond the intended entry behaviour.\n\nEvidence to seek on the tester-owned device / remote interface: Compare permitted and unexpected route/input values through an exposed entry path; record visible or remote effects.\n\nAssessment state: no app-specific observations yet. Features and preconditions must be established before treating this as applicable.\nReference: Android Externally Accessible Components\nhttps://developer.android.com/privacy-and-security/risks/android-exported\n\nDevice scope: tester-owned and inspectable; available observation privileges must be recorded. App and backend internals remain unknown. Platform/service use is conditional until established.",
+                  "mitigation": "Proposed treatment: Constrain accepted input, destinations and actions at each exposed entry point.\n\nClosure: record relevant observed behaviour and residual risk. Internal controls not externally verifiable remain unknown and require additional evidence; do not claim them verified from this model."
+                },
+                {
+                  "id": "671bc664-55a5-55f0-a6e0-a4b49fd86116",
+                  "threatId": "671bc664-55a5-55f0-a6e0-a4b49fd86116",
+                  "number": 4,
+                  "modelType": "STRIDE",
+                  "type": "Denial of service",
+                  "title": "ANDROID-PA-T04: External input makes the app unavailable",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "score": "",
+                  "description": "Candidate scenario: If an external entry path exists, malformed or oversized input may cause a repeatable crash or hang.\n\nEvidence to seek on the tester-owned device / remote interface: Use bounded, authorized input variations and record availability/recovery without inspecting internal code.\n\nAssessment state: no app-specific observations yet. Features and preconditions must be established before treating this as applicable.\nReference: OWASP Denial of Service\nhttps://cheatsheetseries.owasp.org/cheatsheets/Denial_of_Service_Cheat_Sheet.html\n\nDevice scope: tester-owned and inspectable; available observation privileges must be recorded. App and backend internals remain unknown. Platform/service use is conditional until established.",
+                  "mitigation": "Proposed treatment: Bound processing and input sizes and handle invalid input with recoverable errors.\n\nClosure: record relevant observed behaviour and residual risk. Internal controls not externally verifiable remain unknown and require additional evidence; do not claim them verified from this model."
+                },
+                {
+                  "id": "98b4f5e2-0f20-5c2d-a80e-364b1f955aef",
+                  "threatId": "98b4f5e2-0f20-5c2d-a80e-364b1f955aef",
+                  "number": 5,
+                  "modelType": "STRIDE",
+                  "type": "Elevation of privilege",
+                  "title": "ANDROID-PA-T05: External Android entry invokes a protected action",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "score": "",
+                  "description": "Candidate scenario: If an external entry surface exists, a caller may trigger a protected operation without the required user authority.\n\nEvidence to seek on the tester-owned device / remote interface: Exercise discovered externally invocable intents/links in logged-out and authorized test-user states; compare protected outcomes.\n\nAssessment state: no app-specific observations yet. Features and preconditions must be established before treating this as applicable.\nReference: Android Externally Accessible Components\nhttps://developer.android.com/privacy-and-security/risks/android-exported\n\nDevice scope: tester-owned and inspectable; available observation privileges must be recorded. App and backend internals remain unknown. Platform/service use is conditional until established.",
+                  "mitigation": "Proposed treatment: Enforce access for externally triggered actions and require user confirmation where appropriate; confirm platform entry restrictions in a separate design review.\n\nClosure: record relevant observed behaviour and residual risk. Internal controls not externally verifiable remain unknown and require additional evidence; do not claim them verified from this model."
+                },
+                {
+                  "id": "d97eaac8-06d5-54bf-9e2c-5510d32eab31",
+                  "threatId": "d97eaac8-06d5-54bf-9e2c-5510d32eab31",
+                  "number": 6,
+                  "modelType": "STRIDE",
+                  "type": "Repudiation",
+                  "title": "ANDROID-PA-T06: A disputed sensitive action lacks reliable attribution evidence",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "score": "",
+                  "description": "Candidate scenario: Where accountability is required, an actor may deny a sensitive action and available evidence may not distinguish who initiated it.\n\nEvidence to seek: correlate test account, action, timestamp and operation reference across user-visible outcomes and observable requests. A confirmation alone is not proof of actor identity or nonrepudiation. Backend audit records and their integrity remain unknown.\n\nAssessment state: untested; applicable only where an accountable action exists.\nReference: OWASP Logging\nhttps://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html",
+                  "mitigation": "Proposed treatment: establish appropriate authenticated action attribution and protected audit evidence; give users useful operation references. Verify internal evidence separately before claiming nonrepudiation."
+                },
+                {
+                  "id": "16453ea1-f6af-56bf-8c70-810cdb24e6ec",
+                  "threatId": "16453ea1-f6af-56bf-8c70-810cdb24e6ec",
+                  "number": 7,
+                  "modelType": "STRIDE",
+                  "type": "Spoofing",
+                  "title": "ANDROID-PA-T07: The app accepts an impostor remote endpoint",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "score": "",
+                  "description": "Candidate scenario: A network adversary may impersonate the endpoint if the app accepts an invalid server identity.\n\nEvidence to seek on the tester-owned device / remote interface: Where an authorized test path permits, observe rejection of an invalid endpoint identity; otherwise mark this unverified without weakening the target's protections.\n\nAssessment state: no app-specific observations yet. Features and preconditions must be established before treating this as applicable.\nReference: Android Network Security Configuration\nhttps://developer.android.com/privacy-and-security/security-config\n\nDevice scope: tester-owned and inspectable; available observation privileges must be recorded. App and backend internals remain unknown. Platform/service use is conditional until established.",
+                  "mitigation": "Proposed treatment: Require secure transport with appropriate hostname/certificate validation.\n\nClosure: record relevant observed behaviour and residual risk. Internal controls not externally verifiable remain unknown and require additional evidence; do not claim them verified from this model."
+                },
+                {
+                  "id": "ff973a9a-de1d-5a6a-9189-2e5657cdfc2a",
+                  "threatId": "ff973a9a-de1d-5a6a-9189-2e5657cdfc2a",
+                  "number": 8,
+                  "modelType": "STRIDE",
+                  "type": "Information disclosure",
+                  "title": "ANDROID-PA-T08: A previous user's private content remains accessible",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "score": "",
+                  "description": "Candidate scenario: If accounts exist, private output may remain visible after logout or after switching test users.\n\nEvidence to seek on the tester-owned device / remote interface: Use two test identities and observe screens/navigation after the app's supported logout, relaunch or account switch. Do not infer where residual data is stored.\n\nAssessment state: no app-specific observations yet. Features and preconditions must be established before treating this as applicable.\nReference: OWASP MASVS\nhttps://mas.owasp.org/MASVS/\n\nDevice scope: tester-owned and inspectable; available observation privileges must be recorded. App and backend internals remain unknown. Platform/service use is conditional until established.",
+                  "mitigation": "Proposed treatment: Clear or restrict stale user-visible state and reauthorize protected retrievals.\n\nClosure: record relevant observed behaviour and residual risk. Internal controls not externally verifiable remain unknown and require additional evidence; do not claim them verified from this model."
+                },
+                {
+                  "id": "edc164b0-ce7d-5787-a98c-12bddff349a4",
+                  "threatId": "edc164b0-ce7d-5787-a98c-12bddff349a4",
+                  "number": 25,
+                  "modelType": "STRIDE",
+                  "type": "Information disclosure",
+                  "title": "ANDROID-PA-T25: Device logs or diagnostics contain sensitive app data",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "score": "",
+                  "description": "Candidate scenario: The app may write credentials, personal data or protected response values to device-visible logs/diagnostics.\n\nPreconditions: Platform interaction must be present and relevant assets identified; no failure is assumed.\n\nTester-owned device evidence to seek: With test values, inspect logs/diagnostics accessible in the actual tester-owned setup; record access requirements and release/debug build differences. Do not assume all apps or ordinary other apps can read system logs.\n\nKnowledge: OS facility known; app use and configured policy unknown. No app-specific finding yet.\nReference: https://mas.owasp.org/MASVS/",
+                  "mitigation": "Proposed treatment: Avoid logging secrets and minimize or redact sensitive diagnostic content.\n\nClosure: document actual environment, required privileges, observed behaviour and residual risk. Do not infer an internal cause from an external outcome alone."
+                }
+              ],
+              "hasOpenThreats": true
+            }
+          },
+          {
+            "id": "398c729d-8921-589a-b07d-e61af59c0a28",
+            "shape": "process",
+            "zIndex": 5,
+            "position": {
+              "x": 2260,
+              "y": 600
+            },
+            "size": {
+              "width": 360,
+              "height": 360
+            },
+            "attrs": {
+              "text": {
+                "text": "P2 Remote service\nOpaque backend\nInternals unknown",
+                "fontSize": 21,
+                "fontFamily": "Arial",
+                "lineHeight": "1.6em",
+                "fill": "#20334d"
+              },
+              "body": {
+                "stroke": "#c82a3e",
+                "strokeWidth": 2.5,
+                "strokeDasharray": "",
+                "fill": "white"
+              }
+            },
+            "data": {
+              "name": "P2 Remote service\nOpaque backend\nInternals unknown",
+              "type": "tm.Process",
+              "description": "[UNKNOWN REMOTE] Remote communication is assumed; exact interfaces, protocol, identity handling and deployment remain unknown. No database or internal logging topology is inferred.",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "threats": [
+                {
+                  "id": "a5b04b38-2433-58fd-9dc8-76561d605630",
+                  "threatId": "a5b04b38-2433-58fd-9dc8-76561d605630",
+                  "number": 9,
+                  "modelType": "STRIDE",
+                  "type": "Spoofing",
+                  "title": "ANDROID-PA-T09: An invalid or revoked identity is accepted",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "score": "",
+                  "description": "Candidate scenario: If authentication exists, the endpoint may accept forged, expired, revoked or another user's session material.\n\nEvidence to seek on the tester-owned device / remote interface: Compare discovered protected requests across valid, absent and invalid test identities and supported logout/expiry conditions.\n\nAssessment state: no app-specific observations yet. Features and preconditions must be established before treating this as applicable.\nReference: OWASP REST Security\nhttps://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html\n\nDevice scope: tester-owned and inspectable; available observation privileges must be recorded. App and backend internals remain unknown. Platform/service use is conditional until established.",
+                  "mitigation": "Proposed treatment: Validate authentication and session lifecycle for every protected operation.\n\nClosure: record relevant observed behaviour and residual risk. Internal controls not externally verifiable remain unknown and require additional evidence; do not claim them verified from this model."
+                },
+                {
+                  "id": "ac9d9686-d329-587a-a976-727d57fde026",
+                  "threatId": "ac9d9686-d329-587a-a976-727d57fde026",
+                  "number": 10,
+                  "modelType": "STRIDE",
+                  "type": "Elevation of privilege",
+                  "title": "ANDROID-PA-T10: A caller reaches another user's data or restricted function",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "score": "",
+                  "description": "Candidate scenario: If authorization boundaries exist, an independent caller may exceed their permitted object, role or operation scope.\n\nEvidence to seek on the tester-owned device / remote interface: Compare equivalent requests using separately owned test resources and identities; verify returned data and state changes.\n\nAssessment state: no app-specific observations yet. Features and preconditions must be established before treating this as applicable.\nReference: OWASP Authorization\nhttps://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html\n\nDevice scope: tester-owned and inspectable; available observation privileges must be recorded. App and backend internals remain unknown. Platform/service use is conditional until established.",
+                  "mitigation": "Proposed treatment: Check actor, operation and target access independently of mobile UI restrictions.\n\nClosure: record relevant observed behaviour and residual risk. Internal controls not externally verifiable remain unknown and require additional evidence; do not claim them verified from this model."
+                },
+                {
+                  "id": "0f8eb29c-763c-5e43-8baa-a451cbc29721",
+                  "threatId": "0f8eb29c-763c-5e43-8baa-a451cbc29721",
+                  "number": 11,
+                  "modelType": "STRIDE",
+                  "type": "Tampering",
+                  "title": "ANDROID-PA-T11: A caller changes protected fields or invalid operation state",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "score": "",
+                  "description": "Candidate scenario: A discovered interface may accept unexpected fields or transitions that alter protected data or behaviour.\n\nEvidence to seek on the tester-owned device / remote interface: Vary observed request fields and permitted action order using test resources; assess externally returned and visible outcomes.\n\nAssessment state: no app-specific observations yet. Features and preconditions must be established before treating this as applicable.\nReference: OWASP REST Security\nhttps://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html\n\nDevice scope: tester-owned and inspectable; available observation privileges must be recorded. App and backend internals remain unknown. Platform/service use is conditional until established.",
+                  "mitigation": "Proposed treatment: Constrain writable fields and enforce valid state transitions at the service interface.\n\nClosure: record relevant observed behaviour and residual risk. Internal controls not externally verifiable remain unknown and require additional evidence; do not claim them verified from this model."
+                },
+                {
+                  "id": "76cb05a0-fcd3-5ec3-a9ae-e8ce20ef0498",
+                  "threatId": "76cb05a0-fcd3-5ec3-a9ae-e8ce20ef0498",
+                  "number": 12,
+                  "modelType": "STRIDE",
+                  "type": "Tampering",
+                  "title": "ANDROID-PA-T12: A repeated request duplicates a state-changing action",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "score": "",
+                  "description": "Candidate scenario: If a non-idempotent action exists, retrying an accepted request may apply an unintended duplicate change.\n\nEvidence to seek on the tester-owned device / remote interface: Repeat a bounded test operation and compare response references plus externally visible resulting state.\n\nAssessment state: no app-specific observations yet. Features and preconditions must be established before treating this as applicable.\nReference: OWASP REST Security\nhttps://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html\n\nDevice scope: tester-owned and inspectable; available observation privileges must be recorded. App and backend internals remain unknown. Platform/service use is conditional until established.",
+                  "mitigation": "Proposed treatment: Define retry/idempotency semantics and enforce freshness where required.\n\nClosure: record relevant observed behaviour and residual risk. Internal controls not externally verifiable remain unknown and require additional evidence; do not claim them verified from this model."
+                },
+                {
+                  "id": "f42f2f3a-59a8-5c6e-8b60-cdd02d26a36b",
+                  "threatId": "f42f2f3a-59a8-5c6e-8b60-cdd02d26a36b",
+                  "number": 13,
+                  "modelType": "STRIDE",
+                  "type": "Denial of service",
+                  "title": "ANDROID-PA-T13: External calls exhaust service capacity",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "score": "",
+                  "description": "Candidate scenario: Unbounded request volume, size or expensive operations may make the remote interface unavailable.\n\nEvidence to seek on the tester-owned device / remote interface: Assess documented limits and bounded, explicitly authorized rate/size behaviour. Do not infer internal resource topology or conduct disruptive load tests by default.\n\nAssessment state: no app-specific observations yet. Features and preconditions must be established before treating this as applicable.\nReference: OWASP Denial of Service\nhttps://cheatsheetseries.owasp.org/cheatsheets/Denial_of_Service_Cheat_Sheet.html\n\nDevice scope: tester-owned and inspectable; available observation privileges must be recorded. App and backend internals remain unknown. Platform/service use is conditional until established.",
+                  "mitigation": "Proposed treatment: Apply suitable resource limits, timeouts and abuse controls.\n\nClosure: record relevant observed behaviour and residual risk. Internal controls not externally verifiable remain unknown and require additional evidence; do not claim them verified from this model."
+                },
+                {
+                  "id": "4c54ffe9-728f-5f05-b296-c477abed4282",
+                  "threatId": "4c54ffe9-728f-5f05-b296-c477abed4282",
+                  "number": 14,
+                  "modelType": "STRIDE",
+                  "type": "Repudiation",
+                  "title": "ANDROID-PA-T14: A remote operation cannot be externally correlated",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "score": "",
+                  "description": "Candidate scenario: Where accountability is required, ambiguous replies or missing operation references may prevent correlating a disputed request with its outcome.\n\nEvidence to seek on the tester-owned device / remote interface: Observe returned references, status and test-user-visible history where offered. Absence of such evidence does not prove absence of internal logging.\n\nAssessment state: no app-specific observations yet. Features and preconditions must be established before treating this as applicable.\nReference: OWASP Logging\nhttps://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html\n\nDevice scope: tester-owned and inspectable; available observation privileges must be recorded. App and backend internals remain unknown. Platform/service use is conditional until established.",
+                  "mitigation": "Proposed treatment: Provide appropriate operation correlation and maintain protected audit evidence; internal audit integrity needs a separate verification scope.\n\nClosure: record relevant observed behaviour and residual risk. Internal controls not externally verifiable remain unknown and require additional evidence; do not claim them verified from this model."
+                }
+              ],
+              "hasOpenThreats": true
+            }
+          },
+          {
+            "id": "8abcde5e-7b85-56bc-8163-1ee8c86886cc",
+            "shape": "store",
+            "zIndex": 5,
+            "position": {
+              "x": 1020,
+              "y": 1290
+            },
+            "size": {
+              "width": 360,
+              "height": 200
+            },
+            "attrs": {
+              "text": {
+                "text": "D1 App-private files\nOS-provided namespace\nContents / use unknown",
+                "fontSize": 20,
+                "fontFamily": "Arial",
+                "lineHeight": "1.6em",
+                "fill": "#20334d"
+              },
+              "topLine": {
+                "stroke": "#c82a3e",
+                "strokeWidth": 2.5
+              },
+              "bottomLine": {
+                "stroke": "#c82a3e",
+                "strokeWidth": 2.5
+              }
+            },
+            "data": {
+              "name": "D1 App-private files\nOS-provided namespace\nContents / use unknown",
+              "type": "tm.Store",
+              "description": "[PLATFORM FACT] A private app file namespace is provided by the OS. [UNKNOWN APP] Actual persistence, file contents, database use, backup inclusion and protection settings need evidence. Separate drawing does not create a new identity from P1. No direct access for ordinary other apps is implied. False store flags are unverified placeholders.",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "threats": [
+                {
+                  "id": "0bcee37c-c9e3-5daf-950b-77acccd0fefb",
+                  "threatId": "0bcee37c-c9e3-5daf-950b-77acccd0fefb",
+                  "number": 19,
+                  "modelType": "STRIDE",
+                  "type": "Information disclosure",
+                  "title": "ANDROID-PA-T19: Sensitive persisted data is recoverable beyond its intended lifetime",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "score": "",
+                  "description": "Candidate scenario: Sensitive values may remain in app files or included backups beyond the intended lock, logout, retention or account boundary.\n\nPreconditions: App persists sensitive data; observer has a specified file/backup access path. Ordinary other apps are not assumed to read private files.\n\nTester-owned device evidence to seek: Using test data, inspect accessible app artifacts and available backups; compare lock/logout/account states. Record whether file or backup access requires pairing, debug, root/jailbreak or another privilege. Lack of access does not prove no persistence.\n\nKnowledge: OS facility known; app use and configured policy unknown. No app-specific finding yet.\nReference: https://developer.android.com/training/data-storage/app-specific",
+                  "mitigation": "Proposed treatment: Minimize persisted sensitive data, apply suitable platform file/backup policies and remove or rebind stale user data.\n\nClosure: document actual environment, required privileges, observed behaviour and residual risk. Do not infer an internal cause from an external outcome alone."
+                },
+                {
+                  "id": "ee4a58aa-b9df-5be1-8e70-50c70673053b",
+                  "threatId": "ee4a58aa-b9df-5be1-8e70-50c70673053b",
+                  "number": 20,
+                  "modelType": "STRIDE",
+                  "type": "Tampering",
+                  "title": "ANDROID-PA-T20: Modified local state influences a protected decision",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "score": "",
+                  "description": "Candidate scenario: Altered persisted app state may be trusted for identity, entitlement, destinations or queued operations.\n\nPreconditions: App reads local state and the test variant grants a documented modification capability; ownership alone is not sufficient.\n\nTester-owned device evidence to seek: If file modification is available in the tester-owned environment, vary benign test state and observe effects. Label privileged-only results separately from ordinary-user attacks.\n\nKnowledge: OS facility known; app use and configured policy unknown. No app-specific finding yet.\nReference: https://developer.android.com/training/data-storage/app-specific",
+                  "mitigation": "Proposed treatment: Treat restored state as untrusted and enforce protected decisions at the authoritative service.\n\nClosure: document actual environment, required privileges, observed behaviour and residual risk. Do not infer an internal cause from an external outcome alone."
+                },
+                {
+                  "id": "a798cf96-9c2d-59ad-9b47-cf914fa82c69",
+                  "threatId": "a798cf96-9c2d-59ad-9b47-cf914fa82c69",
+                  "number": 21,
+                  "modelType": "STRIDE",
+                  "type": "Denial of service",
+                  "title": "ANDROID-PA-T21: Storage exhaustion or corrupt app state prevents recovery",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "score": "",
+                  "description": "Candidate scenario: Growing cached data, full-device storage or corrupt persisted state may prevent startup or normal use.\n\nPreconditions: Platform interaction must be present and relevant assets identified; no failure is assumed.\n\nTester-owned device evidence to seek: Use bounded test data and controlled low-storage conditions on the owned device; assess recovery without risking unrelated personal data.\n\nKnowledge: OS facility known; app use and configured policy unknown. No app-specific finding yet.\nReference: https://cheatsheetseries.owasp.org/cheatsheets/Denial_of_Service_Cheat_Sheet.html",
+                  "mitigation": "Proposed treatment: Bound retention and processing; handle invalid state and low storage with recoverable errors.\n\nClosure: document actual environment, required privileges, observed behaviour and residual risk. Do not infer an internal cause from an external outcome alone."
+                }
+              ],
+              "hasOpenThreats": true,
+              "storesCredentials": false,
+              "isALog": false,
+              "isEncrypted": false,
+              "isSigned": false
+            }
+          },
+          {
+            "id": "4280084f-e195-57bb-ac53-57b2fc96a852",
+            "shape": "process",
+            "zIndex": 5,
+            "position": {
+              "x": 470,
+              "y": 1270
+            },
+            "size": {
+              "width": 400,
+              "height": 260
+            },
+            "attrs": {
+              "text": {
+                "text": "P4 Android permission gate\nProtected OS resources",
+                "fontSize": 20,
+                "fontFamily": "Arial",
+                "lineHeight": "1.6em",
+                "fill": "#20334d"
+              },
+              "body": {
+                "stroke": "#c82a3e",
+                "strokeWidth": 2.5,
+                "strokeDasharray": "",
+                "fill": "white"
+              }
+            },
+            "data": {
+              "name": "P4 Android permission gate\nProtected OS resources",
+              "type": "tm.Process",
+              "description": "[PLATFORM FACT] OS mediates access to protected device resources. [CONDITIONAL] App requests, grants, accessed resources and resulting behaviour remain unknown. This is a logical gate, not an asserted single process. Specific sensors/features are intentionally unselected.",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "threats": [
+                {
+                  "id": "ba1e469a-6c2d-54c6-9d22-22289802cd45",
+                  "threatId": "ba1e469a-6c2d-54c6-9d22-22289802cd45",
+                  "number": 22,
+                  "modelType": "STRIDE",
+                  "type": "Information disclosure",
+                  "title": "ANDROID-PA-T22: An OS permission exposes more user data than the feature requires",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "score": "",
+                  "description": "Candidate scenario: App access to a protected resource may collect or retain more data than the visible purpose requires, or move it to the remote service.\n\nPreconditions: Platform interaction must be present and relevant assets identified; no failure is assumed.\n\nTester-owned device evidence to seek: Inventory actual permission grants and OS privacy indicators/settings; exercise grant, denial and revocation; compare visible behaviour and observable outbound data. A granted permission alone is not a vulnerability.\n\nKnowledge: OS facility known; app use and configured policy unknown. No app-specific finding yet.\nReference: https://mas.owasp.org/MASVS/",
+                  "mitigation": "Proposed treatment: Request proportionate access at the point of need and limit collection, retention and transmission.\n\nClosure: document actual environment, required privileges, observed behaviour and residual risk. Do not infer an internal cause from an external outcome alone."
+                },
+                {
+                  "id": "3d07566a-aa4e-5749-b2c8-98068138aaa0",
+                  "threatId": "3d07566a-aa4e-5749-b2c8-98068138aaa0",
+                  "number": 23,
+                  "modelType": "STRIDE",
+                  "type": "Denial of service",
+                  "title": "ANDROID-PA-T23: Permission denial or revocation makes the app unusable",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "score": "",
+                  "description": "Candidate scenario: The app may fail repeatedly when a requested OS resource is denied, restricted or revoked.\n\nPreconditions: Platform interaction must be present and relevant assets identified; no failure is assumed.\n\nTester-owned device evidence to seek: Toggle only the test app permissions on the owned device and assess fallback, relaunch and recovery. Distinguish essential feature loss from an unintended app-wide failure.\n\nKnowledge: OS facility known; app use and configured policy unknown. No app-specific finding yet.\nReference: https://mas.owasp.org/MASVS/",
+                  "mitigation": "Proposed treatment: Handle denial/revocation and provide appropriate feature-specific fallback.\n\nClosure: document actual environment, required privileges, observed behaviour and residual risk. Do not infer an internal cause from an external outcome alone."
+                }
+              ],
+              "hasOpenThreats": true
+            }
+          },
+          {
+            "id": "f0fdb0b1-4a67-5c5c-9038-d817735e9576",
+            "shape": "process",
+            "zIndex": 5,
+            "position": {
+              "x": 1530,
+              "y": 1270
+            },
+            "size": {
+              "width": 400,
+              "height": 260
+            },
+            "attrs": {
+              "text": {
+                "text": "P5 Android Keystore\nCryptographic key use",
+                "fontSize": 20,
+                "fontFamily": "Arial",
+                "lineHeight": "1.6em",
+                "fill": "#20334d"
+              },
+              "body": {
+                "stroke": "#c82a3e",
+                "strokeWidth": 2.5,
+                "strokeDasharray": "",
+                "fill": "white"
+              }
+            },
+            "data": {
+              "name": "P5 Android Keystore\nCryptographic key use",
+              "type": "tm.Process",
+              "description": "[PLATFORM FACT] OS service supports non-exportable keys and policy-controlled cryptographic operations. App use, authentication policy and hardware backing are unknown. Operations return results, not raw non-exportable key material. It is not a general token store. [CONDITIONAL] Flows apply only if observed or selected for investigation.",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "threats": [
+                {
+                  "id": "5226ec9d-7d65-5245-be2f-e2f012228da3",
+                  "threatId": "5226ec9d-7d65-5245-be2f-e2f012228da3",
+                  "number": 26,
+                  "modelType": "STRIDE",
+                  "type": "Elevation of privilege",
+                  "title": "ANDROID-PA-T26: A key operation succeeds outside its intended authorization state",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "score": "",
+                  "description": "Candidate scenario: If the app uses Keystore, a caller acting through the app may perform a protected cryptographic operation without the required user authority even though key material is non-exportable.\n\nPreconditions: App Keystore use is established. Direct app compromise or privileged instrumentation is a distinct test variant, not the default attacker.\n\nTester-owned device evidence to seek: Establish app key use, then compare allowed operations across lock, authentication and account states. Confirm key policy/hardware backing only where evidence allows. A compromised-app variant requires separate stated access.\n\nKnowledge: OS facility known; app use and configured policy unknown. No app-specific finding yet.\nReference: https://developer.android.com/privacy-and-security/keystore",
+                  "mitigation": "Proposed treatment: Bind sensitive key use to suitable authorization policy and validate operation purpose; non-exportability alone does not authorize an operation.\n\nClosure: document actual environment, required privileges, observed behaviour and residual risk. Do not infer an internal cause from an external outcome alone."
+                }
+              ],
+              "hasOpenThreats": true
+            }
+          },
+          {
+            "id": "66425cfc-89f6-528c-9a43-dcf5d1c8aa1a",
+            "shape": "trust-boundary-box",
+            "zIndex": -20,
+            "position": {
+              "x": 320,
+              "y": 120
+            },
+            "size": {
+              "width": 1660,
+              "height": 1500
+            },
+            "data": {
+              "name": "B1 Tester-owned Android device / OS",
+              "type": "tm.BoundaryBox",
+              "description": "Known, inspectable device environment. Record actual OS/build and security state. This enclosure describes device context, not equal trust for all contained identities. Root/jailbreak is not assumed.",
+              "isTrustBoundary": true,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "threats": [],
+              "hasOpenThreats": false,
+              "containedElements": [
+                "daed0fb8-b3e5-52a4-8d33-9d850188d4bc",
+                "a34b583c-4390-5aa0-9ccc-c2f3d78f0ff4",
+                "6150de76-854e-527e-9832-84ec27428146",
+                "8abcde5e-7b85-56bc-8163-1ee8c86886cc",
+                "4280084f-e195-57bb-ac53-57b2fc96a852",
+                "f0fdb0b1-4a67-5c5c-9038-d817735e9576"
+              ],
+              "crossingFlows": [
+                "ebc8e3ef-eb62-551d-b774-cf5d7fd78bd8",
+                "d521568e-043d-5e1b-9933-3c16fdf1be89",
+                "554c120e-9c9b-5d3d-bae3-328613cfb9f9",
+                "9ac66eef-1526-525f-b9fe-36fec035e135"
+              ]
+            },
+            "attrs": {
+              "body": {
+                "stroke": "#68788e",
+                "strokeWidth": 2,
+                "strokeDasharray": "10 7",
+                "fill": "transparent",
+                "fillOpacity": 0
+              },
+              "label": {
+                "text": "B1 Tester-owned Android device / OS",
+                "fontSize": 19,
+                "fontFamily": "Arial",
+                "fill": "#68788e",
+                "textAnchor": "start",
+                "textVerticalAnchor": "top",
+                "refX": 20,
+                "refY": 10
+              }
+            }
+          },
+          {
+            "id": "d7f3f909-556d-587d-acee-e5cdc36f6df2",
+            "shape": "trust-boundary-box",
+            "zIndex": -20,
+            "position": {
+              "x": 960,
+              "y": 520
+            },
+            "size": {
+              "width": 480,
+              "height": 1050
+            },
+            "data": {
+              "name": "B2 App sandbox",
+              "type": "tm.BoundaryBox",
+              "description": "App identity/sandbox view includes both opaque application P1 and OS-provided private file namespace D1. No internal application layers are expanded. P3/P4/P5 are outside the app identity.",
+              "isTrustBoundary": true,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "threats": [],
+              "hasOpenThreats": false,
+              "containedElements": [
+                "a34b583c-4390-5aa0-9ccc-c2f3d78f0ff4",
+                "8abcde5e-7b85-56bc-8163-1ee8c86886cc"
+              ],
+              "crossingFlows": [
+                "ebc8e3ef-eb62-551d-b774-cf5d7fd78bd8",
+                "d521568e-043d-5e1b-9933-3c16fdf1be89",
+                "688107b3-7770-5461-95e0-24b6362f4518",
+                "554c120e-9c9b-5d3d-bae3-328613cfb9f9",
+                "9ac66eef-1526-525f-b9fe-36fec035e135",
+                "cb619f2e-64ee-5a04-a907-ce7b6872ed90",
+                "a0b582a9-6f6f-5330-81e2-f089c1ceb64f",
+                "7c77a05d-c38a-50c1-927d-6de58f052b03",
+                "d4b955a1-15f6-5166-bcf0-1add111f3dbe"
+              ]
+            },
+            "attrs": {
+              "body": {
+                "stroke": "#7d67a5",
+                "strokeWidth": 2,
+                "strokeDasharray": "10 7",
+                "fill": "transparent",
+                "fillOpacity": 0
+              },
+              "label": {
+                "text": "B2 App sandbox",
+                "fontSize": 19,
+                "fontFamily": "Arial",
+                "fill": "#7d67a5",
+                "textAnchor": "start",
+                "textVerticalAnchor": "top",
+                "refX": 20,
+                "refY": 10
+              }
+            }
+          },
+          {
+            "id": "0a51c1d3-95c1-5de7-a35e-9d7dabc4b293",
+            "shape": "trust-boundary-box",
+            "zIndex": -20,
+            "position": {
+              "x": 2190,
+              "y": 520
+            },
+            "size": {
+              "width": 500,
+              "height": 520
+            },
+            "data": {
+              "name": "B3 Remote target",
+              "type": "tm.BoundaryBox",
+              "description": "Remote target identity only; no known deployment isolation or internal architecture.",
+              "isTrustBoundary": true,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "threats": [],
+              "hasOpenThreats": false,
+              "containedElements": [
+                "398c729d-8921-589a-b07d-e61af59c0a28"
+              ],
+              "crossingFlows": [
+                "554c120e-9c9b-5d3d-bae3-328613cfb9f9",
+                "9ac66eef-1526-525f-b9fe-36fec035e135",
+                "a9efcc64-3564-59e9-8eec-aa8e4c2bbeaa",
+                "ba780d0e-52ba-5f4b-8e04-cbbe8218417b"
+              ]
+            },
+            "attrs": {
+              "body": {
+                "stroke": "#7d67a5",
+                "strokeWidth": 2,
+                "strokeDasharray": "10 7",
+                "fill": "transparent",
+                "fillOpacity": 0
+              },
+              "label": {
+                "text": "B3 Remote target",
+                "fontSize": 19,
+                "fontFamily": "Arial",
+                "fill": "#7d67a5",
+                "textAnchor": "start",
+                "textVerticalAnchor": "top",
+                "refX": 20,
+                "refY": 482
+              }
+            }
+          },
+          {
+            "id": "6c7079bb-7c93-5da2-88c8-2c7b6f91f835",
+            "shape": "trust-boundary-box",
+            "zIndex": -20,
+            "position": {
+              "x": 995,
+              "y": 1240
+            },
+            "size": {
+              "width": 410,
+              "height": 310
+            },
+            "data": {
+              "name": "B4 Private file access",
+              "type": "tm.BoundaryBox",
+              "description": "A separate view of OS file-access policy protecting the app namespace. This is not an internal app data-access layer or a different app identity.",
+              "isTrustBoundary": true,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "threats": [],
+              "hasOpenThreats": false,
+              "containedElements": [
+                "8abcde5e-7b85-56bc-8163-1ee8c86886cc"
+              ],
+              "crossingFlows": [
+                "37e36c61-87ca-5b81-8f65-d797b0ea44ac",
+                "ec68d06c-21db-5e9a-b17e-47580a0c300f"
+              ]
+            },
+            "attrs": {
+              "body": {
+                "stroke": "#7d67a5",
+                "strokeWidth": 2,
+                "strokeDasharray": "10 7",
+                "fill": "transparent",
+                "fillOpacity": 0
+              },
+              "label": {
+                "text": "B4 Private file access",
+                "fontSize": 19,
+                "fontFamily": "Arial",
+                "fill": "#7d67a5",
+                "textAnchor": "start",
+                "textVerticalAnchor": "top",
+                "refX": 20,
+                "refY": 272
+              }
+            }
+          },
+          {
+            "id": "ebc8e3ef-eb62-551d-b774-cf5d7fd78bd8",
+            "shape": "flow",
+            "zIndex": 3,
+            "width": 200,
+            "height": 100,
+            "source": {
+              "cell": "196d0a44-4cdf-5458-8399-86e4a70bdf96",
+              "anchor": {
+                "name": "center",
+                "args": {
+                  "dx": 130.0,
+                  "dy": -50.0
+                }
+              },
+              "connectionPoint": {
+                "name": "anchor"
+              }
+            },
+            "target": {
+              "cell": "a34b583c-4390-5aa0-9ccc-c2f3d78f0ff4",
+              "anchor": {
+                "name": "center",
+                "args": {
+                  "dx": -172.91616465790594,
+                  "dy": -50.0
+                }
+              },
+              "connectionPoint": {
+                "name": "anchor"
+              }
+            },
+            "vertices": [],
+            "connector": "normal",
+            "attrs": {
+              "line": {
+                "stroke": "#405574",
+                "strokeWidth": 2,
+                "strokeDasharray": "",
+                "sourceMarker": {
+                  "name": ""
+                },
+                "targetMarker": {
+                  "name": "block"
+                }
+              }
+            },
+            "labels": [
+              {
+                "position": {
+                  "distance": 0.5,
+                  "offset": 0,
+                  "args": {
+                    "keepGradient": false,
+                    "ensureLegibility": true
+                  }
+                },
+                "attrs": {
+                  "label": {
+                    "text": "F01 User actions",
+                    "fontSize": 18,
+                    "fontFamily": "Arial",
+                    "fill": "#20334d"
+                  },
+                  "body": {
+                    "fill": "white",
+                    "stroke": "white",
+                    "strokeWidth": 6
+                  }
+                }
+              }
+            ],
+            "data": {
+              "name": "F01 User actions",
+              "type": "tm.Flow",
+              "description": "User input; account and sensitive-action features conditional. [REFERENCE INTERACTION; payloads unverified]",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "threats": [],
+              "hasOpenThreats": false,
+              "protocol": "OS-mediated / user interaction; exact calls unknown",
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "isBidirectional": false,
+              "trustBoundaryIds": [
+                "66425cfc-89f6-528c-9a43-dcf5d1c8aa1a",
+                "d7f3f909-556d-587d-acee-e5cdc36f6df2"
+              ]
+            }
+          },
+          {
+            "id": "d521568e-043d-5e1b-9933-3c16fdf1be89",
+            "shape": "flow",
+            "zIndex": 3,
+            "width": 200,
+            "height": 100,
+            "source": {
+              "cell": "a34b583c-4390-5aa0-9ccc-c2f3d78f0ff4",
+              "anchor": {
+                "name": "center",
+                "args": {
+                  "dx": -172.91616465790594,
+                  "dy": 50.0
+                }
+              },
+              "connectionPoint": {
+                "name": "anchor"
+              }
+            },
+            "target": {
+              "cell": "196d0a44-4cdf-5458-8399-86e4a70bdf96",
+              "anchor": {
+                "name": "center",
+                "args": {
+                  "dx": 130.0,
+                  "dy": 50.0
+                }
+              },
+              "connectionPoint": {
+                "name": "anchor"
+              }
+            },
+            "vertices": [],
+            "connector": "normal",
+            "attrs": {
+              "line": {
+                "stroke": "#405574",
+                "strokeWidth": 2,
+                "strokeDasharray": "",
+                "sourceMarker": {
+                  "name": ""
+                },
+                "targetMarker": {
+                  "name": "block"
+                }
+              }
+            },
+            "labels": [
+              {
+                "position": {
+                  "distance": 0.5,
+                  "offset": 0,
+                  "args": {
+                    "keepGradient": false,
+                    "ensureLegibility": true
+                  }
+                },
+                "attrs": {
+                  "label": {
+                    "text": "F02 Visible results",
+                    "fontSize": 18,
+                    "fontFamily": "Arial",
+                    "fill": "#20334d"
+                  },
+                  "body": {
+                    "fill": "white",
+                    "stroke": "white",
+                    "strokeWidth": 6
+                  }
+                }
+              }
+            ],
+            "data": {
+              "name": "F02 Visible results",
+              "type": "tm.Flow",
+              "description": "Screens and user-visible outcomes; OS display mediation abstracted. [REFERENCE INTERACTION; payloads unverified]",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "threats": [],
+              "hasOpenThreats": false,
+              "protocol": "OS-mediated / user interaction; exact calls unknown",
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "isBidirectional": false,
+              "trustBoundaryIds": [
+                "66425cfc-89f6-528c-9a43-dcf5d1c8aa1a",
+                "d7f3f909-556d-587d-acee-e5cdc36f6df2"
+              ]
+            }
+          },
+          {
+            "id": "80f0bdf8-f4b3-56bb-924d-6044e12e4e90",
+            "shape": "flow",
+            "zIndex": 3,
+            "width": 200,
+            "height": 100,
+            "source": {
+              "cell": "daed0fb8-b3e5-52a4-8d33-9d850188d4bc",
+              "anchor": {
+                "name": "center",
+                "args": {
+                  "dx": 165.0,
+                  "dy": 0.0
+                }
+              },
+              "connectionPoint": {
+                "name": "anchor"
+              }
+            },
+            "target": {
+              "cell": "6150de76-854e-527e-9832-84ec27428146",
+              "anchor": {
+                "name": "center",
+                "args": {
+                  "dx": -200.0,
+                  "dy": 0.0
+                }
+              },
+              "connectionPoint": {
+                "name": "anchor"
+              }
+            },
+            "vertices": [],
+            "connector": "normal",
+            "attrs": {
+              "line": {
+                "stroke": "#405574",
+                "strokeWidth": 2,
+                "strokeDasharray": "",
+                "sourceMarker": {
+                  "name": ""
+                },
+                "targetMarker": {
+                  "name": "block"
+                }
+              }
+            },
+            "labels": [
+              {
+                "position": {
+                  "distance": 0.5,
+                  "offset": 0,
+                  "args": {
+                    "keepGradient": false,
+                    "ensureLegibility": true
+                  }
+                },
+                "attrs": {
+                  "label": {
+                    "text": "F03 External input*",
+                    "fontSize": 18,
+                    "fontFamily": "Arial",
+                    "fill": "#20334d"
+                  },
+                  "body": {
+                    "fill": "white",
+                    "stroke": "white",
+                    "strokeWidth": 6
+                  }
+                }
+              }
+            ],
+            "data": {
+              "name": "F03 External input*",
+              "type": "tm.Flow",
+              "description": "Input enters the known OS routing mechanism if an exposed target route exists. [REFERENCE INTERACTION; payloads unverified]",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "threats": [],
+              "hasOpenThreats": false,
+              "protocol": "OS-mediated / user interaction; exact calls unknown",
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "isBidirectional": false,
+              "trustBoundaryIds": []
+            }
+          },
+          {
+            "id": "688107b3-7770-5461-95e0-24b6362f4518",
+            "shape": "flow",
+            "zIndex": 3,
+            "width": 200,
+            "height": 100,
+            "source": {
+              "cell": "6150de76-854e-527e-9832-84ec27428146",
+              "anchor": {
+                "name": "center",
+                "args": {
+                  "dx": 0.0,
+                  "dy": 125.0
+                }
+              },
+              "connectionPoint": {
+                "name": "anchor"
+              }
+            },
+            "target": {
+              "cell": "a34b583c-4390-5aa0-9ccc-c2f3d78f0ff4",
+              "anchor": {
+                "name": "center",
+                "args": {
+                  "dx": 0.0,
+                  "dy": -180.0
+                }
+              },
+              "connectionPoint": {
+                "name": "anchor"
+              }
+            },
+            "vertices": [],
+            "connector": "normal",
+            "attrs": {
+              "line": {
+                "stroke": "#405574",
+                "strokeWidth": 2,
+                "strokeDasharray": "",
+                "sourceMarker": {
+                  "name": ""
+                },
+                "targetMarker": {
+                  "name": "block"
+                }
+              }
+            },
+            "labels": [
+              {
+                "position": {
+                  "distance": 0.3,
+                  "offset": 0,
+                  "args": {
+                    "keepGradient": false,
+                    "ensureLegibility": true
+                  }
+                },
+                "attrs": {
+                  "label": {
+                    "text": "F08 OS delivery*",
+                    "fontSize": 18,
+                    "fontFamily": "Arial",
+                    "fill": "#20334d"
+                  },
+                  "body": {
+                    "fill": "white",
+                    "stroke": "white",
+                    "strokeWidth": 6
+                  }
+                }
+              }
+            ],
+            "data": {
+              "name": "F08 OS delivery*",
+              "type": "tm.Flow",
+              "description": "OS delivers input to the discovered handler; exact app-side handling unknown. [REFERENCE INTERACTION; payloads unverified]",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "threats": [],
+              "hasOpenThreats": false,
+              "protocol": "OS-mediated / user interaction; exact calls unknown",
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "isBidirectional": false,
+              "trustBoundaryIds": [
+                "d7f3f909-556d-587d-acee-e5cdc36f6df2"
+              ]
+            }
+          },
+          {
+            "id": "554c120e-9c9b-5d3d-bae3-328613cfb9f9",
+            "shape": "flow",
+            "zIndex": 3,
+            "width": 200,
+            "height": 100,
+            "source": {
+              "cell": "a34b583c-4390-5aa0-9ccc-c2f3d78f0ff4",
+              "anchor": {
+                "name": "center",
+                "args": {
+                  "dx": 169.7056274847714,
+                  "dy": -60.0
+                }
+              },
+              "connectionPoint": {
+                "name": "anchor"
+              }
+            },
+            "target": {
+              "cell": "398c729d-8921-589a-b07d-e61af59c0a28",
+              "anchor": {
+                "name": "center",
+                "args": {
+                  "dx": -169.7056274847714,
+                  "dy": -60.0
+                }
+              },
+              "connectionPoint": {
+                "name": "anchor"
+              }
+            },
+            "vertices": [],
+            "connector": "normal",
+            "attrs": {
+              "line": {
+                "stroke": "#c82a3e",
+                "strokeWidth": 2.5,
+                "strokeDasharray": "",
+                "sourceMarker": {
+                  "name": ""
+                },
+                "targetMarker": {
+                  "name": "block"
+                }
+              }
+            },
+            "labels": [
+              {
+                "position": {
+                  "distance": 0.5,
+                  "offset": 0,
+                  "args": {
+                    "keepGradient": false,
+                    "ensureLegibility": true
+                  }
+                },
+                "attrs": {
+                  "label": {
+                    "text": "F04 Network requests",
+                    "fontSize": 18,
+                    "fontFamily": "Arial",
+                    "fill": "#20334d"
+                  },
+                  "body": {
+                    "fill": "white",
+                    "stroke": "white",
+                    "strokeWidth": 6
+                  }
+                }
+              }
+            ],
+            "data": {
+              "name": "F04 Network requests",
+              "type": "tm.Flow",
+              "description": "Remote communication is assumed; exact API calls, endpoints and protections unknown. [REFERENCE INTERACTION; payloads unverified] Encryption flag false is UNVERIFIED, not a cleartext finding.",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "threats": [
+                {
+                  "id": "ca997623-3805-5fb4-9844-48a76f8a0d0e",
+                  "threatId": "ca997623-3805-5fb4-9844-48a76f8a0d0e",
+                  "number": 15,
+                  "modelType": "STRIDE",
+                  "type": "Information disclosure",
+                  "title": "ANDROID-PA-T15: Sensitive request data crosses an unprotected channel",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "score": "",
+                  "description": "Candidate scenario: If sensitive values are transmitted without suitable transport protection, an on-path observer may obtain them.\n\nEvidence to seek on the tester-owned device / remote interface: Discover protocols, destinations and request placement. Inspect content only where the authorized test setup permits; record unknowns explicitly.\n\nAssessment state: no app-specific observations yet. Features and preconditions must be established before treating this as applicable.\nReference: Android Network Security Configuration\nhttps://developer.android.com/privacy-and-security/security-config\n\nDevice scope: tester-owned and inspectable; available observation privileges must be recorded. App and backend internals remain unknown. Platform/service use is conditional until established.",
+                  "mitigation": "Proposed treatment: Use protected transport and avoid unnecessary sensitive data in URLs or exposed request metadata.\n\nClosure: record relevant observed behaviour and residual risk. Internal controls not externally verifiable remain unknown and require additional evidence; do not claim them verified from this model."
+                }
+              ],
+              "hasOpenThreats": true,
+              "protocol": "Unknown; observe target",
+              "isEncrypted": false,
+              "isPublicNetwork": true,
+              "isBidirectional": false,
+              "trustBoundaryIds": [
+                "66425cfc-89f6-528c-9a43-dcf5d1c8aa1a",
+                "d7f3f909-556d-587d-acee-e5cdc36f6df2",
+                "0a51c1d3-95c1-5de7-a35e-9d7dabc4b293"
+              ]
+            }
+          },
+          {
+            "id": "9ac66eef-1526-525f-b9fe-36fec035e135",
+            "shape": "flow",
+            "zIndex": 3,
+            "width": 200,
+            "height": 100,
+            "source": {
+              "cell": "398c729d-8921-589a-b07d-e61af59c0a28",
+              "anchor": {
+                "name": "center",
+                "args": {
+                  "dx": -169.7056274847714,
+                  "dy": 60.0
+                }
+              },
+              "connectionPoint": {
+                "name": "anchor"
+              }
+            },
+            "target": {
+              "cell": "a34b583c-4390-5aa0-9ccc-c2f3d78f0ff4",
+              "anchor": {
+                "name": "center",
+                "args": {
+                  "dx": 169.7056274847714,
+                  "dy": 60.0
+                }
+              },
+              "connectionPoint": {
+                "name": "anchor"
+              }
+            },
+            "vertices": [],
+            "connector": "normal",
+            "attrs": {
+              "line": {
+                "stroke": "#c82a3e",
+                "strokeWidth": 2.5,
+                "strokeDasharray": "",
+                "sourceMarker": {
+                  "name": ""
+                },
+                "targetMarker": {
+                  "name": "block"
+                }
+              }
+            },
+            "labels": [
+              {
+                "position": {
+                  "distance": 0.5,
+                  "offset": 0,
+                  "args": {
+                    "keepGradient": false,
+                    "ensureLegibility": true
+                  }
+                },
+                "attrs": {
+                  "label": {
+                    "text": "F05 Network replies",
+                    "fontSize": 18,
+                    "fontFamily": "Arial",
+                    "fill": "#20334d"
+                  },
+                  "body": {
+                    "fill": "white",
+                    "stroke": "white",
+                    "strokeWidth": 6
+                  }
+                }
+              }
+            ],
+            "data": {
+              "name": "F05 Network replies",
+              "type": "tm.Flow",
+              "description": "Opaque service results; database, topology and internal logs unknown. [REFERENCE INTERACTION; payloads unverified] Encryption flag false is UNVERIFIED, not a cleartext finding.",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "threats": [
+                {
+                  "id": "06403f9e-681c-50b6-9123-ee211ef393cc",
+                  "threatId": "06403f9e-681c-50b6-9123-ee211ef393cc",
+                  "number": 16,
+                  "modelType": "STRIDE",
+                  "type": "Information disclosure",
+                  "title": "ANDROID-PA-T16: Replies expose unnecessary data or internal error detail",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "score": "",
+                  "description": "Candidate scenario: An external response may contain another user's fields, credentials or diagnostic information beyond the caller's need.\n\nEvidence to seek on the tester-owned device / remote interface: Inspect available responses/errors for test identities and compare returned fields with intended access and purpose.\n\nAssessment state: no app-specific observations yet. Features and preconditions must be established before treating this as applicable.\nReference: OWASP REST Security\nhttps://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html\n\nDevice scope: tester-owned and inspectable; available observation privileges must be recorded. App and backend internals remain unknown. Platform/service use is conditional until established.",
+                  "mitigation": "Proposed treatment: Minimize response fields, enforce field-level access and return safe error detail.\n\nClosure: record relevant observed behaviour and residual risk. Internal controls not externally verifiable remain unknown and require additional evidence; do not claim them verified from this model."
+                },
+                {
+                  "id": "074a5da4-4b4e-58fa-a245-dbab594ed3e0",
+                  "threatId": "074a5da4-4b4e-58fa-a245-dbab594ed3e0",
+                  "number": 17,
+                  "modelType": "STRIDE",
+                  "type": "Tampering",
+                  "title": "ANDROID-PA-T17: Untrusted returned content redirects or changes app behaviour",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "score": "",
+                  "description": "Candidate scenario: A hostile response may supply a destination or value that causes an unintended visible action if the interface supports it.\n\nEvidence to seek on the tester-owned device / remote interface: Only where the authorized setup permits response control, compare bounded content variations and externally visible effects; internal parsers remain unknown.\n\nAssessment state: no app-specific observations yet. Features and preconditions must be established before treating this as applicable.\nReference: OWASP MASVS\nhttps://mas.owasp.org/MASVS/\n\nDevice scope: tester-owned and inspectable; available observation privileges must be recorded. App and backend internals remain unknown. Platform/service use is conditional until established.",
+                  "mitigation": "Proposed treatment: Constrain returned values and allowed destinations before triggering actions.\n\nClosure: record relevant observed behaviour and residual risk. Internal controls not externally verifiable remain unknown and require additional evidence; do not claim them verified from this model."
+                },
+                {
+                  "id": "ac2a8313-4ec8-57e1-a55b-adfead89fb34",
+                  "threatId": "ac2a8313-4ec8-57e1-a55b-adfead89fb34",
+                  "number": 18,
+                  "modelType": "STRIDE",
+                  "type": "Denial of service",
+                  "title": "ANDROID-PA-T18: Returned content prevents normal app use",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "score": "",
+                  "description": "Candidate scenario: An excessive or malformed response may cause a visible hang, crash or failed recovery.\n\nEvidence to seek on the tester-owned device / remote interface: Where response control is authorized and available, observe app behaviour on bounded malformed, oversized or failed responses.\n\nAssessment state: no app-specific observations yet. Features and preconditions must be established before treating this as applicable.\nReference: OWASP Denial of Service\nhttps://cheatsheetseries.owasp.org/cheatsheets/Denial_of_Service_Cheat_Sheet.html\n\nDevice scope: tester-owned and inspectable; available observation privileges must be recorded. App and backend internals remain unknown. Platform/service use is conditional until established.",
+                  "mitigation": "Proposed treatment: Bound response processing and provide controlled failure/recovery behaviour.\n\nClosure: record relevant observed behaviour and residual risk. Internal controls not externally verifiable remain unknown and require additional evidence; do not claim them verified from this model."
+                }
+              ],
+              "hasOpenThreats": true,
+              "protocol": "Unknown; observe target",
+              "isEncrypted": false,
+              "isPublicNetwork": true,
+              "isBidirectional": false,
+              "trustBoundaryIds": [
+                "66425cfc-89f6-528c-9a43-dcf5d1c8aa1a",
+                "d7f3f909-556d-587d-acee-e5cdc36f6df2",
+                "0a51c1d3-95c1-5de7-a35e-9d7dabc4b293"
+              ]
+            }
+          },
+          {
+            "id": "a9efcc64-3564-59e9-8eec-aa8e4c2bbeaa",
+            "shape": "flow",
+            "zIndex": 3,
+            "width": 200,
+            "height": 100,
+            "source": {
+              "cell": "3e1ba8b4-d548-52c4-b965-ccdc7bce7ec5",
+              "anchor": {
+                "name": "center",
+                "args": {
+                  "dx": -65.0,
+                  "dy": 70.0
+                }
+              },
+              "connectionPoint": {
+                "name": "anchor"
+              }
+            },
+            "target": {
+              "cell": "398c729d-8921-589a-b07d-e61af59c0a28",
+              "anchor": {
+                "name": "center",
+                "args": {
+                  "dx": -65.0,
+                  "dy": -167.85410331594517
+                }
+              },
+              "connectionPoint": {
+                "name": "anchor"
+              }
+            },
+            "vertices": [],
+            "connector": "normal",
+            "attrs": {
+              "line": {
+                "stroke": "#405574",
+                "strokeWidth": 2,
+                "strokeDasharray": "",
+                "sourceMarker": {
+                  "name": ""
+                },
+                "targetMarker": {
+                  "name": "block"
+                }
+              }
+            },
+            "labels": [
+              {
+                "position": {
+                  "distance": 0.25,
+                  "offset": 0,
+                  "args": {
+                    "keepGradient": false,
+                    "ensureLegibility": true
+                  }
+                },
+                "attrs": {
+                  "label": {
+                    "text": "F06 Direct requests",
+                    "fontSize": 18,
+                    "fontFamily": "Arial",
+                    "fill": "#20334d"
+                  },
+                  "body": {
+                    "fill": "white",
+                    "stroke": "white",
+                    "strokeWidth": 6
+                  }
+                }
+              }
+            ],
+            "data": {
+              "name": "F06 Direct requests",
+              "type": "tm.Flow",
+              "description": "Independent requests to discovered service interfaces. [REFERENCE INTERACTION; payloads unverified] Encryption flag false is UNVERIFIED, not a cleartext finding.",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "threats": [],
+              "hasOpenThreats": false,
+              "protocol": "Unknown; observe target",
+              "isEncrypted": false,
+              "isPublicNetwork": true,
+              "isBidirectional": false,
+              "trustBoundaryIds": [
+                "0a51c1d3-95c1-5de7-a35e-9d7dabc4b293"
+              ]
+            }
+          },
+          {
+            "id": "ba780d0e-52ba-5f4b-8e04-cbbe8218417b",
+            "shape": "flow",
+            "zIndex": 3,
+            "width": 200,
+            "height": 100,
+            "source": {
+              "cell": "398c729d-8921-589a-b07d-e61af59c0a28",
+              "anchor": {
+                "name": "center",
+                "args": {
+                  "dx": 65.0,
+                  "dy": -167.85410331594517
+                }
+              },
+              "connectionPoint": {
+                "name": "anchor"
+              }
+            },
+            "target": {
+              "cell": "3e1ba8b4-d548-52c4-b965-ccdc7bce7ec5",
+              "anchor": {
+                "name": "center",
+                "args": {
+                  "dx": 65.0,
+                  "dy": 70.0
+                }
+              },
+              "connectionPoint": {
+                "name": "anchor"
+              }
+            },
+            "vertices": [],
+            "connector": "normal",
+            "attrs": {
+              "line": {
+                "stroke": "#405574",
+                "strokeWidth": 2,
+                "strokeDasharray": "",
+                "sourceMarker": {
+                  "name": ""
+                },
+                "targetMarker": {
+                  "name": "block"
+                }
+              }
+            },
+            "labels": [
+              {
+                "position": {
+                  "distance": 0.55,
+                  "offset": 0,
+                  "args": {
+                    "keepGradient": false,
+                    "ensureLegibility": true
+                  }
+                },
+                "attrs": {
+                  "label": {
+                    "text": "F07 Direct replies",
+                    "fontSize": 18,
+                    "fontFamily": "Arial",
+                    "fill": "#20334d"
+                  },
+                  "body": {
+                    "fill": "white",
+                    "stroke": "white",
+                    "strokeWidth": 6
+                  }
+                }
+              }
+            ],
+            "data": {
+              "name": "F07 Direct replies",
+              "type": "tm.Flow",
+              "description": "Externally observable service responses to independent callers. [REFERENCE INTERACTION; payloads unverified] Encryption flag false is UNVERIFIED, not a cleartext finding.",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "threats": [],
+              "hasOpenThreats": false,
+              "protocol": "Unknown; observe target",
+              "isEncrypted": false,
+              "isPublicNetwork": true,
+              "isBidirectional": false,
+              "trustBoundaryIds": [
+                "0a51c1d3-95c1-5de7-a35e-9d7dabc4b293"
+              ]
+            }
+          },
+          {
+            "id": "37e36c61-87ca-5b81-8f65-d797b0ea44ac",
+            "shape": "flow",
+            "zIndex": 3,
+            "width": 200,
+            "height": 100,
+            "source": {
+              "cell": "a34b583c-4390-5aa0-9ccc-c2f3d78f0ff4",
+              "anchor": {
+                "name": "center",
+                "args": {
+                  "dx": 65.0,
+                  "dy": 167.85410331594517
+                }
+              },
+              "connectionPoint": {
+                "name": "anchor"
+              }
+            },
+            "target": {
+              "cell": "8abcde5e-7b85-56bc-8163-1ee8c86886cc",
+              "anchor": {
+                "name": "center",
+                "args": {
+                  "dx": 65.0,
+                  "dy": -100.0
+                }
+              },
+              "connectionPoint": {
+                "name": "anchor"
+              }
+            },
+            "vertices": [],
+            "connector": "normal",
+            "attrs": {
+              "line": {
+                "stroke": "#7a638d",
+                "strokeWidth": 2,
+                "strokeDasharray": "8 5",
+                "sourceMarker": {
+                  "name": ""
+                },
+                "targetMarker": {
+                  "name": "block"
+                }
+              }
+            },
+            "labels": [
+              {
+                "position": {
+                  "distance": 0.35,
+                  "offset": 0,
+                  "args": {
+                    "keepGradient": false,
+                    "ensureLegibility": true
+                  }
+                },
+                "attrs": {
+                  "label": {
+                    "text": "F09 Write files*",
+                    "fontSize": 18,
+                    "fontFamily": "Arial",
+                    "fill": "#20334d"
+                  },
+                  "body": {
+                    "fill": "white",
+                    "stroke": "white",
+                    "strokeWidth": 6
+                  }
+                }
+              }
+            ],
+            "data": {
+              "name": "F09 Write files*",
+              "type": "tm.Flow",
+              "description": "Candidate app writes to its OS-provided private namespace. Actual data and retention unknown. [CONDITIONAL APP USE]",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "threats": [],
+              "hasOpenThreats": false,
+              "protocol": "OS-mediated / user interaction; exact calls unknown",
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "isBidirectional": false,
+              "trustBoundaryIds": [
+                "6c7079bb-7c93-5da2-88c8-2c7b6f91f835"
+              ]
+            }
+          },
+          {
+            "id": "ec68d06c-21db-5e9a-b17e-47580a0c300f",
+            "shape": "flow",
+            "zIndex": 3,
+            "width": 200,
+            "height": 100,
+            "source": {
+              "cell": "8abcde5e-7b85-56bc-8163-1ee8c86886cc",
+              "anchor": {
+                "name": "center",
+                "args": {
+                  "dx": -65.0,
+                  "dy": -100.0
+                }
+              },
+              "connectionPoint": {
+                "name": "anchor"
+              }
+            },
+            "target": {
+              "cell": "a34b583c-4390-5aa0-9ccc-c2f3d78f0ff4",
+              "anchor": {
+                "name": "center",
+                "args": {
+                  "dx": -65.0,
+                  "dy": 167.85410331594517
+                }
+              },
+              "connectionPoint": {
+                "name": "anchor"
+              }
+            },
+            "vertices": [],
+            "connector": "normal",
+            "attrs": {
+              "line": {
+                "stroke": "#7a638d",
+                "strokeWidth": 2,
+                "strokeDasharray": "8 5",
+                "sourceMarker": {
+                  "name": ""
+                },
+                "targetMarker": {
+                  "name": "block"
+                }
+              }
+            },
+            "labels": [
+              {
+                "position": {
+                  "distance": 0.35,
+                  "offset": 0,
+                  "args": {
+                    "keepGradient": false,
+                    "ensureLegibility": true
+                  }
+                },
+                "attrs": {
+                  "label": {
+                    "text": "F10 Read files*",
+                    "fontSize": 18,
+                    "fontFamily": "Arial",
+                    "fill": "#20334d"
+                  },
+                  "body": {
+                    "fill": "white",
+                    "stroke": "white",
+                    "strokeWidth": 6
+                  }
+                }
+              }
+            ],
+            "data": {
+              "name": "F10 Read files*",
+              "type": "tm.Flow",
+              "description": "Candidate app reads its private files; access for tester inspection depends on actual privileges. [CONDITIONAL APP USE]",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "threats": [],
+              "hasOpenThreats": false,
+              "protocol": "OS-mediated / user interaction; exact calls unknown",
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "isBidirectional": false,
+              "trustBoundaryIds": [
+                "6c7079bb-7c93-5da2-88c8-2c7b6f91f835"
+              ]
+            }
+          },
+          {
+            "id": "cb619f2e-64ee-5a04-a907-ce7b6872ed90",
+            "shape": "flow",
+            "zIndex": 3,
+            "width": 200,
+            "height": 100,
+            "source": {
+              "cell": "a34b583c-4390-5aa0-9ccc-c2f3d78f0ff4",
+              "anchor": {
+                "name": "center",
+                "args": {
+                  "dx": -59.66054476836757,
+                  "dy": 169.82526136573904
+                }
+              },
+              "connectionPoint": {
+                "name": "anchor"
+              }
+            },
+            "target": {
+              "cell": "4280084f-e195-57bb-ac53-57b2fc96a852",
+              "anchor": {
+                "name": "center",
+                "args": {
+                  "dx": 155.44060016263586,
+                  "dy": -81.80249308184989
+                }
+              },
+              "connectionPoint": {
+                "name": "anchor"
+              }
+            },
+            "vertices": [],
+            "connector": "normal",
+            "attrs": {
+              "line": {
+                "stroke": "#7a638d",
+                "strokeWidth": 2,
+                "strokeDasharray": "8 5",
+                "sourceMarker": {
+                  "name": ""
+                },
+                "targetMarker": {
+                  "name": "block"
+                }
+              }
+            },
+            "labels": [
+              {
+                "position": {
+                  "distance": 0.82,
+                  "offset": 0,
+                  "args": {
+                    "keepGradient": false,
+                    "ensureLegibility": true
+                  }
+                },
+                "attrs": {
+                  "label": {
+                    "text": "F11 OS request*",
+                    "fontSize": 18,
+                    "fontFamily": "Arial",
+                    "fill": "#20334d"
+                  },
+                  "body": {
+                    "fill": "white",
+                    "stroke": "white",
+                    "strokeWidth": 6
+                  }
+                }
+              }
+            ],
+            "data": {
+              "name": "F11 OS request*",
+              "type": "tm.Flow",
+              "description": "Candidate request for protected OS resource access. No specific permission or sensor assumed. [CONDITIONAL APP USE]",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "threats": [],
+              "hasOpenThreats": false,
+              "protocol": "OS-mediated / user interaction; exact calls unknown",
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "isBidirectional": false,
+              "trustBoundaryIds": [
+                "d7f3f909-556d-587d-acee-e5cdc36f6df2"
+              ]
+            }
+          },
+          {
+            "id": "a0b582a9-6f6f-5330-81e2-f089c1ceb64f",
+            "shape": "flow",
+            "zIndex": 3,
+            "width": 200,
+            "height": 100,
+            "source": {
+              "cell": "4280084f-e195-57bb-ac53-57b2fc96a852",
+              "anchor": {
+                "name": "center",
+                "args": {
+                  "dx": 24.761379597641167,
+                  "dy": -128.99982286413456
+                }
+              },
+              "connectionPoint": {
+                "name": "anchor"
+              }
+            },
+            "target": {
+              "cell": "a34b583c-4390-5aa0-9ccc-c2f3d78f0ff4",
+              "anchor": {
+                "name": "center",
+                "args": {
+                  "dx": -158.47631953410132,
+                  "dy": 85.35371196922472
+                }
+              },
+              "connectionPoint": {
+                "name": "anchor"
+              }
+            },
+            "vertices": [],
+            "connector": "normal",
+            "attrs": {
+              "line": {
+                "stroke": "#7a638d",
+                "strokeWidth": 2,
+                "strokeDasharray": "8 5",
+                "sourceMarker": {
+                  "name": ""
+                },
+                "targetMarker": {
+                  "name": "block"
+                }
+              }
+            },
+            "labels": [
+              {
+                "position": {
+                  "distance": 0.2,
+                  "offset": 0,
+                  "args": {
+                    "keepGradient": false,
+                    "ensureLegibility": true
+                  }
+                },
+                "attrs": {
+                  "label": {
+                    "text": "F12 Result / denial*",
+                    "fontSize": 18,
+                    "fontFamily": "Arial",
+                    "fill": "#20334d"
+                  },
+                  "body": {
+                    "fill": "white",
+                    "stroke": "white",
+                    "strokeWidth": 6
+                  }
+                }
+              }
+            ],
+            "data": {
+              "name": "F12 Result / denial*",
+              "type": "tm.Flow",
+              "description": "Candidate permission result or resource data, including denial/revocation. [CONDITIONAL APP USE]",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "threats": [],
+              "hasOpenThreats": false,
+              "protocol": "OS-mediated / user interaction; exact calls unknown",
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "isBidirectional": false,
+              "trustBoundaryIds": [
+                "d7f3f909-556d-587d-acee-e5cdc36f6df2"
+              ]
+            }
+          },
+          {
+            "id": "7c77a05d-c38a-50c1-927d-6de58f052b03",
+            "shape": "flow",
+            "zIndex": 3,
+            "width": 200,
+            "height": 100,
+            "source": {
+              "cell": "a34b583c-4390-5aa0-9ccc-c2f3d78f0ff4",
+              "anchor": {
+                "name": "center",
+                "args": {
+                  "dx": 158.47631953410132,
+                  "dy": 85.35371196922472
+                }
+              },
+              "connectionPoint": {
+                "name": "anchor"
+              }
+            },
+            "target": {
+              "cell": "f0fdb0b1-4a67-5c5c-9038-d817735e9576",
+              "anchor": {
+                "name": "center",
+                "args": {
+                  "dx": -24.76137959764128,
+                  "dy": -128.99982286413456
+                }
+              },
+              "connectionPoint": {
+                "name": "anchor"
+              }
+            },
+            "vertices": [],
+            "connector": "normal",
+            "attrs": {
+              "line": {
+                "stroke": "#7a638d",
+                "strokeWidth": 2,
+                "strokeDasharray": "8 5",
+                "sourceMarker": {
+                  "name": ""
+                },
+                "targetMarker": {
+                  "name": "block"
+                }
+              }
+            },
+            "labels": [
+              {
+                "position": {
+                  "distance": 0.65,
+                  "offset": 0,
+                  "args": {
+                    "keepGradient": false,
+                    "ensureLegibility": true
+                  }
+                },
+                "attrs": {
+                  "label": {
+                    "text": "F13 Key operation*",
+                    "fontSize": 18,
+                    "fontFamily": "Arial",
+                    "fill": "#20334d"
+                  },
+                  "body": {
+                    "fill": "white",
+                    "stroke": "white",
+                    "strokeWidth": 6
+                  }
+                }
+              }
+            ],
+            "data": {
+              "name": "F13 Key operation*",
+              "type": "tm.Flow",
+              "description": "Candidate platform secret/key operation. Policy and any user authentication requirement unknown. [CONDITIONAL APP USE]",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "threats": [],
+              "hasOpenThreats": false,
+              "protocol": "OS-mediated / user interaction; exact calls unknown",
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "isBidirectional": false,
+              "trustBoundaryIds": [
+                "d7f3f909-556d-587d-acee-e5cdc36f6df2"
+              ]
+            }
+          },
+          {
+            "id": "d4b955a1-15f6-5166-bcf0-1add111f3dbe",
+            "shape": "flow",
+            "zIndex": 3,
+            "width": 200,
+            "height": 100,
+            "source": {
+              "cell": "f0fdb0b1-4a67-5c5c-9038-d817735e9576",
+              "anchor": {
+                "name": "center",
+                "args": {
+                  "dx": -155.44060016263597,
+                  "dy": -81.80249308184989
+                }
+              },
+              "connectionPoint": {
+                "name": "anchor"
+              }
+            },
+            "target": {
+              "cell": "a34b583c-4390-5aa0-9ccc-c2f3d78f0ff4",
+              "anchor": {
+                "name": "center",
+                "args": {
+                  "dx": 59.66054476836757,
+                  "dy": 169.82526136573904
+                }
+              },
+              "connectionPoint": {
+                "name": "anchor"
+              }
+            },
+            "vertices": [],
+            "connector": "normal",
+            "attrs": {
+              "line": {
+                "stroke": "#7a638d",
+                "strokeWidth": 2,
+                "strokeDasharray": "8 5",
+                "sourceMarker": {
+                  "name": ""
+                },
+                "targetMarker": {
+                  "name": "block"
+                }
+              }
+            },
+            "labels": [
+              {
+                "position": {
+                  "distance": 0.12,
+                  "offset": 0,
+                  "args": {
+                    "keepGradient": false,
+                    "ensureLegibility": true
+                  }
+                },
+                "attrs": {
+                  "label": {
+                    "text": "F14 Crypto result*",
+                    "fontSize": 18,
+                    "fontFamily": "Arial",
+                    "fill": "#20334d"
+                  },
+                  "body": {
+                    "fill": "white",
+                    "stroke": "white",
+                    "strokeWidth": 6
+                  }
+                }
+              }
+            ],
+            "data": {
+              "name": "F14 Crypto result*",
+              "type": "tm.Flow",
+              "description": "Candidate cryptographic result. Non-exportable key material is not returned to the app. [CONDITIONAL APP USE]",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "threats": [],
+              "hasOpenThreats": false,
+              "protocol": "OS-mediated / user interaction; exact calls unknown",
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "isBidirectional": false,
+              "trustBoundaryIds": [
+                "d7f3f909-556d-587d-acee-e5cdc36f6df2"
+              ]
+            }
+          },
+          {
+            "id": "156d157e-90d6-5d08-a257-2b27f7ea516b",
+            "shape": "td-text-block",
+            "zIndex": 5,
+            "position": {
+              "x": 320,
+              "y": 1640
+            },
+            "size": {
+              "width": 2370,
+              "height": 36
+            },
+            "attrs": {
+              "text": {
+                "text": "Known device: record OS/build, lock, permissions, backup and debug state. Ownership does not imply root/jailbreak.",
+                "fontSize": 18,
+                "fontFamily": "Arial",
+                "lineHeight": "1.6em",
+                "fill": "#20334d"
+              }
+            },
+            "data": {
+              "name": "Known device: record OS/build, lock, permissions, backup and debug state. Ownership does not imply root/jailbreak.",
+              "type": "tm.Text",
+              "description": "device-profile.txt records facts for a concrete assessment.",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "threats": [],
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "id": "07a0f271-5cd1-5cfa-9e6b-e638102b2365",
+            "shape": "td-text-block",
+            "zIndex": 5,
+            "position": {
+              "x": 320,
+              "y": 1685
+            },
+            "size": {
+              "width": 2370,
+              "height": 36
+            },
+            "attrs": {
+              "text": {
+                "text": "Solid = reference interaction | Dashed arrow + * = conditional app use / verify | Red = Open candidate threat",
+                "fontSize": 18,
+                "fontFamily": "Arial",
+                "lineHeight": "1.6em",
+                "fill": "#20334d"
+              }
+            },
+            "data": {
+              "name": "Solid = reference interaction | Dashed arrow + * = conditional app use / verify | Red = Open candidate threat",
+              "type": "tm.Text",
+              "description": "Conditional relationships are not confirmed data flows. Red does not indicate High severity.",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "threats": [],
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "id": "92161303-1b14-551a-93e3-fe83b598b25f",
+            "shape": "td-text-block",
+            "zIndex": 5,
+            "position": {
+              "x": 320,
+              "y": 1730
+            },
+            "size": {
+              "width": 2370,
+              "height": 36
+            },
+            "attrs": {
+              "text": {
+                "text": "App implementation and exact API calls unknown | Backend configuration unknown | All threats untested; severity TBD",
+                "fontSize": 18,
+                "fontFamily": "Arial",
+                "lineHeight": "1.6em",
+                "fill": "#20334d"
+              }
+            },
+            "data": {
+              "name": "App implementation and exact API calls unknown | Backend configuration unknown | All threats untested; severity TBD",
+              "type": "tm.Text",
+              "description": "No app source or backend configuration has been supplied. Device remains known platform context.",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "threats": [],
+              "hasOpenThreats": false
+            }
+          }
+        ],
+        "description": "Known tester-owned OS/device; opaque app and backend. Platform services shown; app-specific use conditional. 14 straight arrows. See scope, device profile and evidence notes."
+      }
+    ]
+  }
+}
