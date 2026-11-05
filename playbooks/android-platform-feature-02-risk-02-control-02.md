@@ -38,6 +38,8 @@ public static void v(String tag, String msg) { Log.v(tag, sanitize(msg)); }
 public static void w(String tag, String msg) { Log.w(tag, sanitize(msg)); }
 ```
 
+*Code block shows the PII patterns and the logger that redacts them before writing to Logcat*
+
 #### 02. Prevent sensitive data from being exposed in the logs
 
 Prevent sensitive data from being exposed in the logs by replacing them with safe placeholders (e.g. “REDACTED_EMAIL”).
@@ -72,6 +74,8 @@ protected void onCreate(Bundle savedInstanceState) {
 }
 ```
 
+*Code block shows the demo form logging user input through SecureLogger so PII is redacted*
+
 <img src="assets/feature2_risk2_control2_ss1.png" width="800" alt="The demo application displaying synthetic inputs before log redaction">
 
 *Screenshot shows the demo application displaying synthetic email, password, card, and NRIC inputs.*
@@ -79,5 +83,11 @@ protected void onCreate(Bundle savedInstanceState) {
 <img src="assets/feature2_risk2_control2_ss2.png" width="800" alt="Android Studio Logcat displaying redacted email, password, card, and NRIC placeholders">
 
 *Screenshot shows the four sensitive data patterns replaced with safe placeholders in Android Studio Logcat.*
+
+### References
+
+- https://developer.android.com/privacy-and-security/risks/log-info-disclosure
+- https://developer.android.com/reference/android/util/Log
+- https://mas.owasp.org/MASVS/05-MASVS-STORAGE/
 
 The source code with the implemented control can be found [here](control-examples/android-platform-feature-02-risk-02-control-02.zip).

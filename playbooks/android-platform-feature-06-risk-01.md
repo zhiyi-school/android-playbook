@@ -19,7 +19,7 @@ Set up the required environment with:
 
 #### 02. Start screen recording
 
-Swipe down from the top of the device screen to open `Quick Settings`, then locate and tap `Screen record`. 
+Swipe down from the top of the device screen to open `Quick Settings`, then locate and tap `Screen record`.
 
 > Note: Screen recording in the application does not require any manual setup through `Quick Settings`. The app can initiate screen recording programmatically, but it becomes active only after the user grants permission via the system prompt at runtime. The `Quick Settings` steps are shown here to demonstrate how screen recording works.
 

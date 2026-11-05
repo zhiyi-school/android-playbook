@@ -35,7 +35,7 @@ buildTypes {
 
 #### 02. Hide hardcoded values from simple string searches
 
-Hide hardcoded values from simple string searches by storing them as XOR-obfuscated byte arrays. This stops the value appearing in MobSF's hardcoded-secrets report. 
+Hide hardcoded values from simple string searches by storing them as XOR-obfuscated byte arrays. This stops the value appearing in MobSF's hardcoded-secrets report.
 
 ```java
 public static String getApiKey() {
@@ -69,5 +69,10 @@ private static String decrypt(byte[] encrypted) {
 However, it is obfuscation, not encryption: the key is in the same APK, so the value can be recovered with a decompiler or by hooking `getApiKey()` at runtime.
 
 > Note: Secret keys, such as payment `sk_live_` keys, must not be shipped in the app in any form. Keep them on the server and have the app call the server instead.
+
+### References
+
+- https://developer.android.com/topic/performance/app-optimization/enable-app-optimization
+- https://mas.owasp.org/MASVS/11-MASVS-RESILIENCE/
 
 The source code with the implemented control can be found [here](control-examples/android-platform-feature-01-risk-01-control-01.zip).

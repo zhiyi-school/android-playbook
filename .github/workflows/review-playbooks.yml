@@ -1,0 +1,115 @@
+name: Review Playbooks
+
+on:
+  push:
+    branches:
+      # - main
+      # - draft
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  review-playbooks:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+      models: read
+
+    env:
+      GITHUB_MODELS_CLARITY_MODEL: openai/gpt-4.1-mini
+      GITHUB_MODELS_FACTCHECK_MODEL: openai/gpt-4.1
+      GITHUB_MODELS_COMPLETENESS_MODEL: openai/gpt-4.1
+
+    steps:
+      - name: Prepare the submitted materials for review
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Prepare the review tool
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Identify the playbooks changed in this proposal
+        id: changed
+        shell: bash
+        run: |
+          echo "This review is now checking which playbook documents were changed in this pull request."
+          echo "Only Markdown files directly inside the 'playbooks/' folder (not its subfolders) are included in this policy review."
+          echo "The review compares pull requests against the base branch, and manual runs review every playbook document."
+
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            git fetch origin "${{ github.base_ref }}" --depth=1
+            files="$(git diff --name-only --diff-filter=ACMR "origin/${{ github.base_ref }}...HEAD" | grep '^playbooks/[^/]*\.md$' || true)"
+          elif [ "${{ github.event_name }}" = "push" ]; then
+            files="$(git diff --name-only --diff-filter=ACMR "${{ github.event.before }}...${{ github.sha }}" | grep '^playbooks/[^/]*\.md$' || true)"
+          else
+            files="$(find playbooks -maxdepth 1 -type f -name '*.md' | sort || true)"
+          fi
+
+          if [ -z "$files" ]; then
+            echo "Result: no playbook Markdown files were changed in the 'playbooks/' folder."
+            echo "This means there are no playbook documents that need validation in this review run."
+          else
+            echo "Result: the following playbook documents will be reviewed for completeness and formatting:"
+            printf '%s\n' "$files"
+          fi
+
+          {
+            echo 'files<<EOF'
+            echo "$files"
+            echo 'EOF'
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Review the changed playbooks for required structure
+        shell: bash
+        run: |
+          echo "The review is now examining each changed playbook document."
+          echo "This check looks for missing required sections, broken internal references, formatting problems, and template text that was not replaced."
+          echo "The purpose is to help keep these documents consistent, understandable, and ready for public review."
+
+          if [ -z "${{ steps.changed.outputs.files }}" ]; then
+            echo "No changed playbook Markdown files were found under 'playbooks/', so there is nothing further to review in this workflow."
+            exit 0
+          fi
+
+          echo "The detailed validator output begins below."
+          printf '%s\n' "${{ steps.changed.outputs.files }}" | node scripts/validate-playbooks.mjs --stdin
+
+      - name: Review the changed playbooks for advisory clarity feedback
+        if: steps.changed.outputs.files != ''
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "The advisory clarity phase is now reviewing the changed playbook documents."
+          echo "This phase uses GitHub Models to suggest clearer wording, stronger section flow, and more understandable demonstration steps."
+          echo "This phase does not block the pull request. It only adds guidance for authors and reviewers."
+
+          printf '%s\n' "${{ steps.changed.outputs.files }}" | node scripts/clarity-playbooks.mjs --stdin
+
+      - name: Review the changed playbooks for advisory technical fact check feedback
+        if: steps.changed.outputs.files != ''
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "The advisory technical fact check phase is now reviewing the changed playbook documents."
+          echo "This phase uses GitHub Models to flag likely incorrect Android or security claims, unsupported overclaims, and missing technical assumptions in numbered steps."
+          echo "This phase does not block the pull request. It only adds structured guidance for authors and reviewers."
+
+          printf '%s\n' "${{ steps.changed.outputs.files }}" | node scripts/factcheck-playbooks.mjs --stdin
+
+      - name: Review the changed playbooks for advisory technical completeness feedback
+        if: steps.changed.outputs.files != ''
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "The advisory technical completeness phase is now reviewing the changed playbook documents."
+          echo "This phase uses GitHub Models to read the numbered steps as one end-to-end sequence, explain its overall goal, and suggest what else could reduce friction."
+          echo "This phase does not block the pull request. It only adds structured guidance for authors and reviewers."
+
+          printf '%s\n' "${{ steps.changed.outputs.files }}" | node scripts/completeness-playbooks.mjs --stdin

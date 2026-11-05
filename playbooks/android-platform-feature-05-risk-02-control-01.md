@@ -14,7 +14,7 @@ Prevent user activities from being captured by accessibility services by setting
 
 #### 01. Prevent user activities from being captured
 
-Prevent user activities from being captured by accessibility services by setting `android:importantForAccessibility="no"` on views in the layout XML. 
+Prevent user activities from being captured by accessibility services by setting `android:importantForAccessibility="no"` on views in the layout XML.
 
 This stops accessibility services that use default settings from receiving events and node information for these views. A service that sets `flagIncludeNotImportantViews` in its configuration still receives them, so test the control against such a service. Hiding sign-in fields from accessibility also stops screen readers such as TalkBack from reading them.
 
@@ -78,5 +78,10 @@ This stops accessibility services that use default settings from receiving event
 ```
 
 *Code block shows the layout XML with `android:importantForAccessibility` set*
+
+### References
+
+- https://developer.android.com/reference/android/view/View#attr_android:importantForAccessibility
+- https://mas.owasp.org/MASVS/09-MASVS-PLATFORM/
 
 The source code with the implemented control can be found [here](control-examples/android-platform-feature-05-risk-02-control-01.zip).

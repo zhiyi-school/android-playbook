@@ -22,6 +22,8 @@ private static final CertificatePinner certificatePinner = new CertificatePinner
         .build();
 ```
 
+*Code block shows pinning the server's SHA-256 public key hashes with CertificatePinner*
+
 #### 02. Prevent your application from sending network requests to unauthorised servers
 
 Prevent your application from sending network requests to unauthorised servers by rejecting any connection whose server certificate hash does not match the pinned value.
@@ -31,5 +33,10 @@ Prevent your application from sending network requests to unauthorised servers b
 *Screenshot shows the application's warning after certificate pinning rejected the certificate presented by Burp Suite.*
 
 When verifying this control, make Burp's CA trusted as described in the note in [android-platform-feature-03-risk-01](android-platform-feature-03-risk-01.md). With only a user-installed CA, the connection fails even without pinning, so the check would pass regardless.
+
+### References
+
+- https://developer.android.com/privacy-and-security/security-config#CertificatePinning
+- https://mas.owasp.org/MASVS/controls/MASVS-NETWORK-2/
 
 The source code with the implemented control can be found [here](control-examples/android-platform-feature-03-risk-01-control-01.zip).

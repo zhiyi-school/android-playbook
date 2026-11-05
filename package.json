@@ -1,0 +1,10 @@
+{
+  "name": "android-playbook",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "validate:playbooks": "node scripts/validate-playbooks.mjs",
+    "clarity:playbooks": "node scripts/clarity-playbooks.mjs",
+    "completeness:playbooks": "node scripts/completeness-playbooks.mjs"
+  }
+}

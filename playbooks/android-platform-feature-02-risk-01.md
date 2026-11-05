@@ -18,7 +18,7 @@ Set up the required environment with:
 * A physical Huawei P50 Pro running HarmonyOS 4.2.0 (Android API level 31)
 * A Windows host computer with Android Studio, Android Debug Bridge (ADB), Apktool, apksigner & keytool installed
 
-#### 02. Enable developer mode 
+#### 02. Enable developer mode
 
 On the AVD, go to `Settings > About Device > Build Number`. Then, click on the “`Build Number`” setting 7 times to enable developer mode.
 
@@ -45,6 +45,8 @@ Connect the selected test device to the host computer and approve the debugging 
 adb devices
 ```
 
+*Command shows listing the connected devices*
+
 Use one connected test device at a time. If multiple devices are listed, use `adb -s <device-serial>` instead of `adb` for the commands below.
 
 #### 04. Check the installed app
@@ -70,11 +72,15 @@ Disassemble your APK using Apktool:
 apktool d <apk-name>
 ```
 
+*Command shows decompiling the APK with apktool*
+
 Add `debuggable="true"` to `AndroidManifest.xml` to enable application debugging, then rebuild the modified APK:
 
 ```cmd
 apktool b --debug <directory>
 ```
+
+*Command shows rebuilding the modified APK in debug mode*
 
 Generate a self-signed certificate, align the rebuilt APK, and then sign it. Android only installs signed apps, and the APK must be aligned before signing because aligning afterwards invalidates the signature.
 
@@ -85,11 +91,15 @@ zipalign -p -f 4 <output_apk_name> aligned.apk
 apksigner sign --ks test.keystore --ks-key-alias test --out signed.apk aligned.apk
 ```
 
+*Commands show generating a signing key, then aligning and signing the rebuilt APK*
+
 Install your repackaged APK and verify that it is debuggable.
 
 ```cmd
 adb install <apk>
 ```
+
+*Command shows installing the repackaged APK*
 
 #### 06. Open Android Studio
 

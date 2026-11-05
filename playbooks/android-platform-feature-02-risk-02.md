@@ -18,7 +18,7 @@ Set up the required environment with:
 * A physical Huawei P50 Pro running HarmonyOS 4.2.0 (Android API level 31)
 * A Windows host computer with Android Studio & adb installed
 
-#### 02. Enable developer mode 
+#### 02. Enable developer mode
 
 On the AVD, go to `Settings > About Device > Build Number`. Then, click on the “`Build Number`” setting 7 times to enable developer mode.
 

@@ -88,4 +88,10 @@ Prevent on-screen text capture by setting `android:importantForAccessibility="no
 > Note: Accessibility services can request views marked as not important for accessibility by setting `flagIncludeNotImportantViews` in their configuration. Whether this exposes views hidden with `noHideDescendants` has not yet been tested in this playbook. When verifying this control, also test it against an accessibility service that sets this flag. Hiding these views also stops screen readers such as TalkBack from reading them.
 
 
+### References
+
+- https://developer.android.com/reference/android/view/View#attr_android:importantForAccessibility
+- https://developer.android.com/reference/android/view/View#IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS
+- https://mas.owasp.org/MASVS/09-MASVS-PLATFORM/
+
 The source code with the implemented control can be found [here](control-examples/android-platform-feature-05-risk-03-control-01.zip).

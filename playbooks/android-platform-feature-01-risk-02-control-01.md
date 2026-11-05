@@ -99,4 +99,10 @@ Prevent your application from executing when modifications to your application a
 
 *Screenshot shows different actual and expected SHA-256 hashes, failed signature verification, and blocked application initialization in Android Studio Logcat.*
 
+### References
+
+- https://developer.android.com/reference/android/content/pm/PackageManager#GET_SIGNING_CERTIFICATES
+- https://developer.android.com/reference/android/content/pm/SigningInfo
+- https://mas.owasp.org/MASVS/11-MASVS-RESILIENCE/
+
 The source code with the implemented control can be found [here](control-examples/android-platform-feature-01-risk-02-control-01.zip).

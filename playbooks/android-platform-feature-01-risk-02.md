@@ -25,6 +25,8 @@ Connect the selected test device to the host computer with USB debugging enabled
 adb devices
 ```
 
+*Command shows listing the connected devices*
+
 Use one connected test device at a time. If multiple devices are listed, use `adb -s <device-serial>` instead of `adb` for the commands below.
 
 #### 02. List the device's installed application packages
@@ -35,6 +37,8 @@ List the device's installed application packages to identify the target applicat
 adb shell pm list packages <package-filter>
 ```
 
+*Command shows finding the target app's package name*
+
 #### 03. Retrieve the APK paths
 
 Retrieve the APK paths using the target application's package name to locate its installed APK files on the device.
@@ -43,6 +47,8 @@ Retrieve the APK paths using the target application's package name to locate its
 adb shell pm path <package-name>
 ```
 
+*Command shows retrieving the APK paths for the package*
+
 #### 04. Copy the APK
 
 On the host computer, open a terminal in your local analysis folder and copy the APK from the device using a path returned in the previous step. Replace `<path>` with the APK path without the `package:` prefix. The APK is saved in the terminal's current directory.
@@ -50,6 +56,8 @@ On the host computer, open a terminal in your local analysis folder and copy the
 ```shell
 adb pull <path>
 ```
+
+*Command shows copying the APK to the workstation*
 
 If multiple APK paths are returned, copy each APK into the same analysis folder and retain its filename. Application content may be distributed across the base APK and split APKs.
 
@@ -60,6 +68,8 @@ Unpack the APK using APKtool to access your application’s files.
 ```cmd
 apktool d <apk-name>
 ```
+
+*Command shows decompiling the APK with apktool*
 
 #### 06. Edit the AndroidManifest.xml
 
@@ -79,6 +89,8 @@ Rebuild the modified APK using APKtool to save the changes and create a new APK.
 apktool b <decompiled_folder> -o <output_apk_name>
 ```
 
+*Command shows rebuilding the modified APK with apktool*
+
 #### 08. Generate a self-signed certificate
 
 Generate a self-signed certificate, align the rebuilt APK, and then sign it. Android only installs signed apps, and the APK must be aligned before signing because aligning afterwards invalidates the signature.
@@ -90,6 +102,8 @@ zipalign -p -f 4 <output_apk_name> aligned.apk
 apksigner sign --ks test.keystore --ks-key-alias test --out signed.apk aligned.apk
 ```
 
+*Commands show generating a signing key, then aligning and signing the rebuilt APK*
+
 #### 09. Install the repackaged APK
 
 Uninstall the original app. Android refuses to install an app over one signed with a different key, and uninstalling deletes the original app's data.
@@ -99,11 +113,15 @@ adb uninstall <package-name>
 adb install signed.apk
 ```
 
-Install the repackaged APK to verify if the app is debuggable. 
+*Commands show removing the original app and installing the signed APK*
+
+Install the repackaged APK to verify if the app is debuggable.
 
 ```cmd
-adb install <apk> or adb install-multiple <apk1> <apk2>
+adb install <apk>
 ```
+
+*Command shows installing the repackaged APK*
 
 For split APKs, install them together with `adb install-multiple <apk1> <apk2>`.
 
@@ -114,6 +132,8 @@ List files in the app’s private directory to confirm the repackaged app is now
 ```cmd
 adb shell run-as <package-name> ls -R
 ```
+
+*Command shows listing the app's private files to confirm it is debuggable*
 
 Android-Platform-Feature-01-Risk-02 control measures:
 

@@ -59,9 +59,11 @@ To enable interception of HTTPS traffic: Transfer the ca.crt file from the host 
 adb -s emulator-<id> push ca.crt /sdcard/Download/ca.crt
 ```
 
+*Command shows copying the CA certificate to the emulator's Download folder*
+
 #### 06. Install the CA certificate
 
-To enable interception of HTTPS traffic: open `Settings`, search for `CA certificate`, select the option to install a CA certificate, and choose the transferred `ca.crt` file. 
+To enable interception of HTTPS traffic: open `Settings`, search for `CA certificate`, select the option to install a CA certificate, and choose the transferred `ca.crt` file.
 
 <img src="assets/feature3_ss8.png" width="800" alt="The Android settings screens for installing a CA certificate">
 

@@ -73,4 +73,10 @@ private SecretKey getOrCreateKey() throws Exception {
 
 *Screenshot shows encrypted data in the stored preferences file.*
 
+### References
+
+- https://developer.android.com/privacy-and-security/keystore
+- https://developer.android.com/reference/javax/crypto/Cipher
+- https://mas.owasp.org/MASVS/05-MASVS-STORAGE/
+
 The source code with the implemented control can be found [here](control-examples/android-platform-feature-02-risk-01-control-01.zip).

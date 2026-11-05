@@ -58,4 +58,9 @@ fun BlockedByAdbDialog() {
 
 *Screenshot shows the USB debugging warning displayed on the device.*
 
+### References
+
+- https://developer.android.com/reference/android/provider/Settings.Global#ADB_ENABLED
+- https://mas.owasp.org/MASVS/11-MASVS-RESILIENCE/
+
 The source code with the implemented control can be found [here](control-examples/android-platform-feature-02-risk-02-control-01.zip).

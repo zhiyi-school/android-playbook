@@ -44,11 +44,15 @@ On the host computer, find its IP address by running `ipconfig` (Windows) or `if
 adb shell settings put global http_proxy <HOST_IP>:8081
 ```
 
+*Command shows routing the device's traffic through the Burp Suite proxy*
+
 When testing is finished, remove the proxy setting:
 
 ```cmd
 adb shell settings put global http_proxy :0
 ```
+
+*Command shows removing the proxy setting*
 
 #### 04. Export Burp Suite’s CA certificate
 
@@ -66,9 +70,11 @@ To enable interception of HTTPS traffic: Transfer the ca.crt file from the host 
 adb push ca.crt /sdcard/Download/ca.crt
 ```
 
+*Command shows copying the CA certificate to the device's Download folder*
+
 #### 06. Install the CA certificate
 
-To enable interception of HTTPS traffic: open `Settings`, search for `CA certificate`, select the option to install a CA certificate, and choose the transferred `ca.crt` file. 
+To enable interception of HTTPS traffic: open `Settings`, search for `CA certificate`, select the option to install a CA certificate, and choose the transferred `ca.crt` file.
 
 <img src="assets/feature3_ss8.png" width="800" alt="The Android settings screens for installing a CA certificate">
 

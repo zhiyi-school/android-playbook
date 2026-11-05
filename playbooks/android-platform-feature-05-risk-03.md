@@ -39,9 +39,9 @@ Create a malicious application by declaring an accessibility service in the mani
 
 #### 03. Define how the accessibility service operates
 
-Define how the accessibility service operates by 
+Define how the accessibility service operates by
 
-(a) creating an XML configuration file in `@xml/accessibility_service_config_capture` to request relevant event types and window content access, and 
+(a) creating an XML configuration file in `@xml/accessibility_service_config_capture` to request relevant event types and window content access, and
 
 (b) implementing a service class (e.g., `.TextCaptureAccessibilityService) that listens for `TYPE_WINDOW_STATE_CHANGED` events, traverses the active UI hierarchy, extracts on-screen text and metadata, captures screenshots periodically, and persists the collected data after the user grants accessibility permission.
 
@@ -58,7 +58,7 @@ Define how the accessibility service operates by
     android:notificationTimeout="100" />
 ```
 
-*Code block shows the accessibility service configuration file (`res/xml/<file name>.xml`)*.
+*Code block shows the accessibility service configuration file (`res/xml/<file name>.xml`)*
 
 ```kotlin
 private fun traverseNodeTree(

@@ -109,7 +109,7 @@ Install the malicious application on the device, perform the steps listed in [an
 adb install <malicious_apk>
 ```
 
-*Code block installs malicious APK*
+*Command shows installing the malicious APK*
 
 #### 04. Allow the malicious application to display over other apps
 

@@ -41,7 +41,7 @@ Create a malicious application by declaring an accessibility service in the mani
 
 Define how the accessibility service operates by:
 
-(a) creating an XML configuration file in `@xml/accessibility_config` to specify the event types and service capabilities requested, and 
+(a) creating an XML configuration file in `@xml/accessibility_config` to specify the event types and service capabilities requested, and
 
 (b) implementing a service class (e.g., `.AttackAccessibilityService`) that listens for `TYPE_WINDOW_STATE_CHANGED` events to detect activity changes and automatically locate and click logout UI elements after the user grants accessibility permission.
 
@@ -54,7 +54,7 @@ Define how the accessibility service operates by:
     android:description="@string/accessibility_service_description" />
 ```
 
-*Code block shows the accessibility service configuration file (`res/xml/<file name>.xml`)*.
+*Code block shows the accessibility service configuration file (`res/xml/<file name>.xml`)*
 
 ```kotlin
 class AttackAccessibilityService : AccessibilityService() {
